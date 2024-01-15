@@ -170,22 +170,4 @@ def login_required(view):
 
     return wrapped_view
 
-@bp.route('/index')
-def index():
-    return render_template('auth/index.html')
 
-@bp.route('/new-film')
-def new_film():
-    return render_template('auth/new-film.html')
-
-@bp.route('/hot-film')
-def hot_film():
-    return render_template('auth/hot-film.html')
-
-@bp.route('/track')
-def track():
-    return render_template('auth/track.html')
-
-@bp.route('/all-film')
-def all_film():
-    return render_template('auth/all-film.html')
