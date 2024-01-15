@@ -15,11 +15,12 @@
     <meta name="author" content="">
     <meta name="MobileOptimized" content="320">
     <!--Start Style -->
-    <link rel="stylesheet" type="text/css" href="static/css/fonts.css">
-    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="static/css/icofont.min.css">
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/fonts.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/icofont.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
 	<link rel="stylesheet" id="theme-change" type="text/css" href="">
     <style>
         .abc{
@@ -31,7 +32,7 @@
 <body>
 	<div class="loader">
 	  <div class="spinner">
-		<img src="static/picture/loader.gif" alt="">
+		<img src="{{url_for('static',filename='picture/loader/gif')}}" alt="">
 	  </div> 
 	</div>
     <!-- Main Body -->
@@ -41,7 +42,7 @@
             <div class="header-inner-wrapper">
                 <div class="logo-wrapper">
                     <a href="" class="admin-logo">
-                        <img src="static/picture/logo.png" alt="">
+                        <img src="{{url_for('static',filename='picture/logo.png/')}}" alt="">
                     </a>
                 </div>
                 <div class="header-right">
@@ -262,7 +263,7 @@
 <!--                        </div>-->
                         <div class="user-info-wrapper header-links">
                             <a href="javascript:void(0);" class="user-info">
-                                <img src="static/picture/user.png" alt="" class="user-img">
+                                <img src="../../static/picture/user.png" alt="" class="user-img">
                                 <div class="blink-animation">
                                     <span class="blink-circle"></span>
                                     <span class="main-circle"></span>
@@ -332,7 +333,7 @@
                     </li>
                     
                     <li>
-                        <a href="new-film.html">
+                        <a href="{{url_for('auth.new_film')}}" methods="get">
                             <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                             </span>
@@ -342,7 +343,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="orders.html">
+                        <a href="{{url_for('auth.hot_film')}}">
                             <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-truck"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
                             </span>
@@ -352,7 +353,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="customers.html">
+                        <a href="{{url_for('auth.track')}}">
                             <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                             </span>
@@ -362,7 +363,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="customers.html">
+                        <a href="{{url_for('auth.all_film')}}">
                             <span class="icon-menu feather-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                             </span>
@@ -381,13 +382,13 @@
                 <div id="carouselExampleSlidesOnly" class="abccarousel" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="static/picture/c1.jpg" class="d-block" alt="...">
+                            <img src="../../static/picture/c1.jpg" class="d-block" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="static/picture/c2.jpg" class="d-block" alt="...">
+                            <img src="../../static/picture/c2.jpg" class="d-block" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="static/picture/c3.jpg" class="d-block" alt="...">
+                            <img src="../../static/picture/c3.jpg" class="d-block" alt="...">
                         </div>
                     </div>
                 </div>
@@ -719,7 +720,7 @@
                                                     <td>#JH2033</td>
                                                     <td>
                                                         <span class="img-thumb ">
-                                                            <img src="static/picture/1.jpg" alt=" ">
+                                                            <img src="../../static/picture/1.jpg" alt=" ">
                                                             <span class="ml-2 ">Emily Arnold</span>
                                                         </span>
                                                     </td>
@@ -773,7 +774,7 @@
                                                     <td>#MK4433</td>
                                                     <td>
                                                         <span class="img-thumb ">
-                                                            <img src="static/picture/4.jpg" alt=" ">
+                                                            <img src="../../static/picture/4.jpg" alt=" ">
                                                             <span class="ml-2 ">Mark Doe</span>
                                                         </span>
                                                     </td>
@@ -827,7 +828,7 @@
                                                     <td>#MD4578</td>
                                                     <td>
                                                         <span class="img-thumb">
-                                                            <img src="static/picture/7.jpg" alt=" ">
+                                                            <img src="../../static/picture/7.jpg" alt=" ">
                                                             <span class="ml-2 ">Mark Smith</span>
                                                         </span>
                                                     </td>
@@ -881,7 +882,7 @@
                                                     <td>#DD1048</td>
                                                     <td>
                                                         <span class="img-thumb ">
-                                                            <img src="static/picture/1.jpg" alt=" ">
+                                                            <img src="../../static/picture/1.jpg" alt=" ">
                                                             <span class="ml-2 ">Mike Wood</span>
                                                         </span>
                                                     </td>
@@ -935,7 +936,7 @@
                                                     <td>#JH2033</td>
                                                     <td>
                                                         <span class="img-thumb ">
-                                                            <img src="static/picture/3.jpg" alt=" ">
+                                                            <img src="../../static/picture/3.jpg" alt=" ">
                                                             <span class="ml-2 ">Emily Arnold</span>
                                                         </span>
                                                     </td>
@@ -989,7 +990,7 @@
                                                     <td>#MK4433</td>
                                                     <td>
                                                         <span class="img-thumb ">
-                                                            <img src="static/picture/1.jpg" alt=" ">
+                                                            <img src="../../static/picture/1.jpg" alt=" ">
                                                             <span class="ml-2 ">John Doe</span>
                                                         </span>
                                                     </td>
@@ -1043,7 +1044,7 @@
                                                     <td>#MD4578</td>
                                                     <td>
                                                         <span class="img-thumb ">
-                                                            <img src="static/picture/7.jpg" alt=" ">
+                                                            <img src="../../static/picture/7.jpg" alt=" ">
                                                             <span class="ml-2 ">Mark Smith</span>
                                                         </span>
                                                     </td>
@@ -1097,7 +1098,7 @@
                                                     <td>#DD1048</td>
                                                     <td>
                                                         <span class="img-thumb ">
-                                                            <img src="static/picture/4.jpg" alt=" ">
+                                                            <img src="../../static/picture/4.jpg" alt=" ">
                                                             <span class="ml-2 ">Mike Wood</span>
                                                         </span>
                                                     </td>
@@ -1152,7 +1153,7 @@
                 <div class="abc">
                     <div class="abc1">
                         <a href="singal.html">
-                            <img src="static/picture/c1.jpg">
+                            <img src="../../static/picture/c1.jpg">
                         </a>
                         <div>
                             <div>
@@ -1165,7 +1166,7 @@
                     </div>
                     <div class="abc1">
                         <a href="singal.html">
-                            <img src="static/picture/c1.jpg">
+                            <img src="../../static/picture/c1.jpg">
                         </a>
                         <div>
                             <div>
@@ -1178,7 +1179,7 @@
                     </div>
                     <div class="abc1">
                         <a href="singal.html">
-                            <img src="static/picture/c1.jpg">
+                            <img src="../../static/picture/c1.jpg">
                         </a>
                         <div>
                             <div>
@@ -1191,7 +1192,7 @@
                     </div>
                     <div class="abc1">
                         <a href="singal.html">
-                            <img src="static/picture/c1.jpg">
+                            <img src="../../static/picture/c1.jpg">
                         </a>
                         <div>
                             <div>
@@ -1206,7 +1207,7 @@
                 </div>
                 <div class="abc">
                     <div class="abc2">
-                        <img src="static/picture/c1.jpg">
+                        <img src="../../static/picture/c1.jpg">
                         <p>jsabckujjsabckujjsabckujjsabckujjsabckujjsabckujjsabckujjsabckujjsabckujjsabckujjsabckujjsabckuj</p>
                     </div>
                 </div>
@@ -1381,16 +1382,16 @@
 	
 	
     <!-- Script Start -->
-	<script src="static/js/jquery.min.js"></script>
-    <script src="static/js/popper.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-	<script src="static/js/swiper.min.js"></script>
-    <script src="static/js/apexcharts.min.js"></script>
-    <script src="static/js/control-chart-apexcharts.js"></script>
+	<script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/popper.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+	<script src="{{url_for('static',filename='js/swiper.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/apexcharts.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/control-chart-apexcharts.js')}}"></script>
 	<!-- Page Specific -->
-    <script src="static/js/nice-select.min.js"></script>
+    <script src="{{url_for('static',filename='js/nice-select.min.js')}}"></script>
     <!-- Custom Script -->
-    <script src="static/js/custom.js"></script>
+    <script src="{{url_for('static',filename='js/custom.js')}}"></script>
 </body>
 
 </html>
