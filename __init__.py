@@ -24,18 +24,18 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
-
     # from flaskr import db
     # db.init_app(app)
 
     from . import auth
     app.register_blueprint(auth.bp)
 
-    from . import auth
-    app.register_blueprint(db.bp)
+    # from . import db
+    # app.register_blueprint(db.bp)
 
     return app
+
+
+if __name__ == '__main__':
+    app = create_app()
+    app.run(debug=True)
