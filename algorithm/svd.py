@@ -7,11 +7,11 @@ from surprise.dump import dump, load
 from surprise.model_selection import cross_validate, train_test_split
 
 # 电影信息数据集
-ALL_MOVIES_PATH = './../data/dataset/all_movies.csv'
+ALL_MOVIES_PATH = './data/dataset/all_movies.csv'
 # 评分数据集
-RATINGS_PATH = './../data/dataset/ratings.csv'
+RATINGS_PATH = './data/dataset/ratings.csv'
 # 训练好的模型
-MODLE_PATH = './model/svd_model_1p5M.joblib'
+MODLE_PATH = './algorithm/model/svd_model_1p5M.joblib'
 
 
 class RecModel:
@@ -21,6 +21,8 @@ class RecModel:
         self.testset = None
         self.model = None
         self.movie_dict = None
+        wd = os.getcwd()
+        print(wd)
         if os.path.exists(MODLE_PATH):
             self.preprocess()
             self.model = load(MODLE_PATH)[1]
@@ -51,7 +53,7 @@ class RecModel:
             self.data = data
             self.movie_dict = md_links_cn_new3_title.set_index('movieId')['title'].to_dict()
         else:
-            self.data = pd.read_csv(RATINGS_PATH, usecols=['userId', 'movieId', 'rating'])
+            # self.data = pd.read_csv(RATINGS_PATH, usecols=['userId', 'movieId', 'rating'])
             self.movie_dict = pd.read_csv(ALL_MOVIES_PATH).set_index('movieId')['title'].to_dict()
 
     def train(self):
@@ -119,5 +121,5 @@ class RecModel:
 
 if __name__ == '__main__':
     SVD = RecModel()
-    rec = SVD.get_top_n_recommendations(1)
-    print(SVD.movie_dict)
+    # rec = SVD.get_top_n_recommendations(1)
+    # print(SVD.movie_dict)

@@ -1,5 +1,7 @@
 import functools
 
+from algorithm.svd import RecModel
+
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
@@ -7,7 +9,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 # from flaskr.db import get_db
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
+bp = Blueprint('auth', __name__, url_prefix='/')
 
 # @bp.route('/register', methods=('GET', 'POST'))
 # def register():
@@ -170,9 +172,14 @@ def login_required(view):
 
     return wrapped_view
 
-@bp.route('/index')
+
+@bp.route('/')
 def index():
-    return render_template('auth/index.html')
+    context = None
+    model = RecModel()
+    context = str(model.get_top_n_recommendations(34, n=10)[0])
+    print(context)
+    return render_template('auth/index.html', context=context)
 
 @bp.route('/new-film')
 def new_film():
