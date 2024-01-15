@@ -1,40 +1,64 @@
-import sqlite3
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
-import click
-from flask import current_app, g
+app = Flask(__name__)
 
+HOSTNAME = "127.0.0.1"
+PORT = 3306
+USERNAME = "root"
+PASSWORD = "123456"
+DATABASE = "movie_system"
 
-def get_db():
-    if 'db' not in g:
-        g.db = sqlite3.connect(
-            current_app.config['DATABASE'],
-            detect_types=sqlite3.PARSE_DECLTYPES
-        )
-        g.db.row_factory = sqlite3.Row
+app.config[
+    'SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}?charset=utf8mb4"
 
-    return g.db
+db = SQLAlchemy(app)
 
+class Movie(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    rating = db.Column(db.Integer)
 
-def close_db(e=None):
-    db = g.pop('db', None)
+    def __init__(self, title, year, rating):
+        self.title = title
+        self.year = year
+        self.rating = rating
 
-    if db is not None:
-        db.close()
+    @classmethod
+    def create_movie(cls, title, year, rating):
+        movie = cls(title=title, year=year, rating=rating)
+        db.session.add(movie)
+        db.session.commit()
+        return movie
 
+    @classmethod
+    def get_all_movies(cls):
+        return cls.query.all()
 
-def init_db():
-    db = get_db()
+    @classmethod
+    def get_movie_by_id(cls, movie_id):
+        return cls.query.get(movie_id)
 
-    with current_app.open_resource('schema.sql') as f:
-        db.executescript(f.read().decode('utf8'))
+    def update(self, title=None, year=None, rating=None):
+        if title:
+            self.title = title
+        if year:
+            self.year = year
+        if rating:
+            self.rating = rating
+        db.session.commit()
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
-@click.command('init-db')
-def init_db_command():
-    """Clear the existing data and create new tables."""
-    init_db()
-    click.echo('Initialized the database.')
+# 测试是否连接成功
+with app.app_context():
+    with db.engine.connect() as conn:
+        rs = conn.execute("show tables")
+        print(rs.fetchone())  # (1,)
 
-def init_app(app):
-    app.teardown_appcontext(close_db)
-    app.cli.add_command(init_db_command)
+if __name__ == '__main__':
+    app.run()
