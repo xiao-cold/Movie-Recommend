@@ -92,45 +92,16 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
-    if request.method == 'POST':
-        username = request.form['username']    # request.form is a special type of dict mapping submitted form keys and values. The user will input their username and password.
-        password = request.form['password']
-        # db = get_db()
-        error = None
-
-        if not username:
-            error = 'Username is required.'
-        elif not password:
-            error = 'Password is required.'
-
-        # if error is None:
-        #     try:
-        #         db.execute(
-        #             "INSERT INTO user (username, password) VALUES (?, ?)",
-        #             (username, generate_password_hash(password)),
-        #         )
-        #         db.commit()
-        #     except db.IntegrityError:
-        #         error = f"User {username} is already registered."
-        #     else:
-        #         return redirect(url_for("auth.login"))   # url_for(视图函数名)
-
-        flash(error)
-
-    return render_template('auth/register.html')
-
-@bp.route('/register', methods=('GET', 'POST'))
-def register():
-    if request.method == 'POST':
-        username = request.form['username']    # request.form is a special type of dict mapping submitted form keys and values. The user will input their username and password.
-        password = request.form['password']
-        # db = get_db()
-        error = None
-
-        if not username:
-            error = 'Username is required.'
-        elif not password:
-            error = 'Password is required.'
+    # if request.method == 'POST':
+    #     username = request.form['username']    # request.form is a special type of dict mapping submitted form keys and values. The user will input their username and password.
+    #     password = request.form['password']
+    #     # db = get_db()
+    #     error = None
+    #
+    #     if not username:
+    #         error = 'Username is required.'
+    #     elif not password:
+    #         error = 'Password is required.'
 
         # if error is None:
         #     try:
@@ -144,7 +115,7 @@ def register():
         #     else:
         #         return redirect(url_for("auth.login"))   # url_for(视图函数名)
 
-        flash(error)
+        # flash(error)
 
     return render_template('auth/register.html')
 
@@ -201,7 +172,7 @@ def login_required(view):
 
 @bp.route('/index')
 def index():
-    return render_template('')
+    return render_template('auth/index.html')
 
 @bp.route('/new-film')
 def new_file():
