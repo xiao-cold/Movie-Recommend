@@ -9,7 +9,7 @@ app = Flask(__name__)
 HOSTNAME = "127.0.0.1"
 PORT = 3306
 USERNAME = "root"
-PASSWORD = "530712"
+PASSWORD = "123456"
 DATABASE = "db_movies"
 
 app.config[
@@ -25,11 +25,155 @@ class Movie(db.Model):
     title = db.Column(db.String(255))  # Adjust the length as per your requirement
     year = db.Column(db.Integer)
     vote_count = db.Column(db.Integer)
+    overview = db.Column(db.String(360))
+    poster_path = db.Column(db.String(255))
+    director = db.Column(db.String(255))
+    cast = db.Column(db.String(255))
+    genre = db.Column(db.String(255))
+    vote_average = db.Column(db.String(255))
+
+class Action(db.Model):
+    __tablename__ = 'top250_Action'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Adiventure(db.Model):
+    __tablename__ = 'top250_Adventure'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Animation(db.Model):
+    __tablename__ = 'top250_Animation'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Children(db.Model):
+    __tablename__ = 'top250_Children'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Comedy(db.Model):
+    __tablename__ = 'top250_Comedy'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Crime(db.Model):
+    __tablename__ = 'top250_Crime'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Documentary(db.Model):
+    __tablename__ = 'top250_Documentary'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Drama(db.Model):
+    __tablename__ = 'top250_Drama'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Fantasy(db.Model):
+    __tablename__ = 'top250_Fantasy'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Horror(db.Model):
+    __tablename__ = 'top250_Horror'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Top_movie(db.Model):
+    __tablename__ = 'top250_movie'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Mystery(db.Model):
+    __tablename__ = 'top250_Mystery'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Romance(db.Model):
+    __tablename__ = 'top250_Romance'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+
+
+class SciFi(db.Model):
+    __tablename__ = 'top250_Sci-Fi'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
+
+class Thriller(db.Model):
+    __tablename__ = 'top250_Thriller'
+    movieId = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))  # Adjust the length as per your requirement
+    year = db.Column(db.Integer)
+    vote_count = db.Column(db.Integer)
+    vote_average = db.Column(db.String(255))
+    wr = db.Column(db.String(255))
 
     def __init__(self, title, year, rating):
         self.title = title
         self.year = year
         self.rating = rating
+
 
     @classmethod
     def create_movie(cls, title, year, rating):
@@ -68,8 +212,10 @@ def test():
     # 实例化
     session = Session()
     # 返回全部符合的结果
-    r2 = session.query(Movie.title).filter(Movie.tmdbId == 862).all()
+    r2 = session.query(Action.title).filter(Action.year == 1994).all()
+    r3 = session.query(Action.title).filter(Action.title.endswith('冷')).all()
     print(r2)
+    print(r3)
     return '0'
 
 
