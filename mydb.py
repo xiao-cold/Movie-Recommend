@@ -164,7 +164,7 @@ class Ratings(db.Model):
     __tablename__ = 'ratings'
     userId = db.Column(db.Integer, primary_key=True)
     movieId = db.Column(db.Integer)
-    rating = db.Column(db)
+    rating = db.Column(db.String(255))
 
 class Users(db.Model):
     __tablename__ = 'users'
