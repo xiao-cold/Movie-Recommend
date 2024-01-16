@@ -30,12 +30,10 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
 
-    # from . import db
+    # from . import auth
     # app.register_blueprint(db.bp)
 
+    from . import recommend
+    app.register_blueprint(recommend.bp)
+
     return app
-
-
-if __name__ == '__main__':
-    app = create_app()
-    app.run(debug=True)
