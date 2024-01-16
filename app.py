@@ -3,10 +3,12 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+from algorithm.svd import RecModel
+
 HOSTNAME = "127.0.0.1"
 PORT = 3306
 USERNAME = "root"
-PASSWORD = "123456"
+PASSWORD = "530712"
 DATABASE = "db_movies"
 
 # create and configure the app
@@ -14,10 +16,12 @@ app = Flask(__name__, instance_relative_config=True)
 app.config[
     'SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}?charset=utf8mb4"
 db = SQLAlchemy(app)
+
+model = RecModel()
 # db.init_app(app)
 app.config.from_mapping(
     SECRET_KEY='dev',
-    DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+    # DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
 )
 # if test_config is None:
 #     # load the instance config, if it exists, when not testing
@@ -33,11 +37,13 @@ except OSError:
 
 # from flaskr import db
 # db.init_app(app)
-from . import auth
+import auth
 
 app.register_blueprint(auth.bp)
 # from . import auth
 # app.register_blueprint(db.bp)
-from . import recommend
+import recommend
 
 app.register_blueprint(recommend.bp)
+
+app.run(debug=True)

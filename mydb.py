@@ -20,7 +20,7 @@ class Movie(db.Model):
     poster_path = db.Column(db.String(255))
     director = db.Column(db.String(255))
     cast = db.Column(db.String(255))
-    genre = db.Column(db.String(255))
+    genres = db.Column(db.String(255))
     vote_average = db.Column(db.String(255))
 
 class Action(db.Model):
@@ -114,7 +114,7 @@ class Horror(db.Model):
     wr = db.Column(db.String(255))
 
 class Top_Movies(db.Model):
-    __tablename__ = 'top250_movie'
+    __tablename__ = 'top250_movies'
     movieId = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))  # Adjust the length as per your requirement
     year = db.Column(db.Integer)
