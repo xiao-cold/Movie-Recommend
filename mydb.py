@@ -160,6 +160,26 @@ class Thriller(db.Model):
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
 
+class Ratings(db.Model):
+    __tablename__ = 'ratings'
+    userId = db.Column(db.Integer, primary_key=True)
+    movieId = db.Column(db.Integer)
+    rating = db.Column(db)
+
+class Users(db.Model):
+    __tablename__ = 'users'
+    userId = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(255))
+    password = db.Column(db.String(255))
+
+class Tracks(db.Model):
+    __tablename__ = 'tracks'
+    trackId = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
+    movieId = db.Column(db.Integer, db.ForeignKey('movies'))
+    time = db.Column(db.String(255))
+
+
     def __init__(self, title, year, rating):
         self.title = title
         self.year = year
