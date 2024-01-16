@@ -113,7 +113,7 @@ class Horror(db.Model):
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
 
-class Top_movie(db.Model):
+class Top_Movies(db.Model):
     __tablename__ = 'top250_movie'
     movieId = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))  # Adjust the length as per your requirement
