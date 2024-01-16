@@ -5,6 +5,10 @@ bp = Blueprint('recommend', __name__)
 
 
 
+@bp.route('/')
+def recommend():
+    return redirect(url_for('recommend.index'))
+
 @bp.route('/index')
 def index():
     return render_template('recommend/index.html')
