@@ -3,19 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+from app import db
 
-app = Flask(__name__)
 
-HOSTNAME = "127.0.0.1"
-PORT = 3306
-USERNAME = "root"
-PASSWORD = "123456"
-DATABASE = "db_movies"
-
-app.config[
-    'SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}?charset=utf8mb4"
-
-db = SQLAlchemy(app)
+# app = Flask(__name__)
 
 
 class Movie(db.Model):
@@ -122,7 +113,7 @@ class Horror(db.Model):
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
 
-class Top_movie(db.Model):
+class Top_Movies(db.Model):
     __tablename__ = 'top250_movie'
     movieId = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))  # Adjust the length as per your requirement
@@ -203,21 +194,20 @@ class Thriller(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-
-@app.route('/')
-def test():
-    engine = create_engine(f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}?charset=utf8mb4")
-    # 把当前的引擎绑定给这个会话
-    Session = sessionmaker(bind=engine)
-    # 实例化
-    session = Session()
-    # 返回全部符合的结果
-    r2 = session.query(Action.title).filter(Action.year == 1994).all()
-    r3 = session.query(Action.title).filter(Action.title.endswith('冷')).all()
-    print(r2)
-    print(r3)
-    return '0'
-
-
-if __name__ == '__main__':
-    app.run()
+# @app.route('/')
+# def test():
+#     engine = create_engine(f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}?charset=utf8mb4")
+#     # 把当前的引擎绑定给这个会话
+#     Session = sessionmaker(bind=engine)
+#     # 实例化
+#     session = Session()
+#     # 返回全部符合的结果
+#     r2 = session.query(Action.title).filter(Action.year == 1994).all()
+#     r3 = session.query(Action.title).filter(Action.title.endswith('冷')).all()
+#     print(r2)
+#     print(r3)
+#     return '0'
+#
+#
+# if __name__ == '__main__':
+#     app.run()
