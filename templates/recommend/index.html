@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="zxx">
 <!--<![endif]-->
@@ -10,111 +12,118 @@
     <title>今日电影推荐|首页</title>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="MobileOptimized" content="320">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta content="" name="author">
+    <meta content="320" name="MobileOptimized">
     <!--Start Style -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/fonts.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/font-awesome.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/icofont.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
-	<link rel="stylesheet" id="theme-change" type="text/css" href="">
+    <link href="{{ url_for('static',filename='css/fonts.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static',filename='css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static',filename='css/icofont.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet" type="text/css">
+    <link href="" id="theme-change" rel="stylesheet" type="text/css">
     <style>
-        .abc{
+        .abc {
             display: flex;
         }
     </style>
 </head>
 
 <body>
-	<div class="loader">
-	  <div class="spinner">
-		<img src="{{url_for('static',filename='picture/loader/gif')}}" alt="">
-	  </div> 
-	</div>
-    <!-- Main Body -->
-    <div class="page-wrapper">
-        <!-- Header Start -->
-        <header class="header-wrapper main-header">
-            <div class="header-inner-wrapper">
-                <div class="logo-wrapper">
-                    <a href="" class="admin-logo">
-                        <img src="{{url_for('static',filename='picture/logo.png/')}}" alt="">
-                    </a>
+<div class="loader">
+    <div class="spinner">
+        <img alt="" src="{{url_for('static',filename='picture/loader/gif')}}">
+    </div>
+</div>
+<!-- Main Body -->
+<div class="page-wrapper">
+    <!-- Header Start -->
+    <header class="header-wrapper main-header">
+        <div class="header-inner-wrapper">
+            <div class="logo-wrapper">
+                <a class="admin-logo" href="">
+                    <img alt="" src="{{url_for('static',filename='picture/logo.png/')}}">
+                </a>
+            </div>
+            <div class="header-right">
+                <div class="serch-wrapper">
+                    <form>
+                        <input placeholder="Search Here..." type="text">
+                    </form>
+                    <a class="search-close" href="javascript:void(0);"><span class="icofont-close-line"></span></a>
                 </div>
-                <div class="header-right">
-                    <div class="serch-wrapper">
-                        <form>
-                            <input type="text" placeholder="Search Here...">
-                        </form>
-                        <a class="search-close" href="javascript:void(0);"><span class="icofont-close-line"></span></a>
+                <div class="header-left">
+                    <div class="header-links">
+                        <a class="toggle-btn" href="javascript:void(0);">
+                            <span></span>
+                        </a>
                     </div>
-                    <div class="header-left">
-                        <div class="header-links">
-                            <a href="javascript:void(0);" class="toggle-btn">
-                                <span></span>
-                            </a>
-                        </div>
-                        <div class="header-links search-link">
-                            <a class="search-toggle" href="javascript:void(0);">
-                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve">
+                    <div class="header-links search-link">
+                        <a class="search-toggle" href="javascript:void(0);">
+                            <svg style="enable-background:new 0 0 56.966 56.966;" version="1.1"
+                                 viewbox="0 0 56.966 56.966" x="0px" xml:space="preserve"
+                                 xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
                                     <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23
                                     s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92
                                     c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
                                     s-17-7.626-17-17S14.61,6,23.984,6z"></path>
                                 </svg>
-                            </a>
-                        </div>
+                        </a>
                     </div>
-                    <div class="header-controls">
-                        <div class="user-info-wrapper header-links">
-                            <a href="javascript:void(0);" class="user-info">
-                                <img src="../../static/picture/user.png" alt="" class="user-img">
-                                <div class="blink-animation">
-                                    <span class="blink-circle"></span>
-                                    <span class="main-circle"></span>
-                                </div>
-                            </a>
-                            <div class="user-info-box">
-                                <div class="drop-down-header">
-                                    <h4>尊敬的用户</h4>
-<!--                                    <p>UI | UX Designer</p>-->
-                                </div>
-                                <ul>
-                                    <li>
-                                        <a href="profile.html">
-                                            <i class="far fa-edit"></i> 编辑资料
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="setting.html">
-                                            <i class="fas fa-cog"></i> 设置
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../auth/login.html">
-                                            <i class="fas fa-sign-out-alt"></i> 退出
-                                        </a>
-                                    </li>
-                                </ul>
+                </div>
+                <div class="header-controls">
+                    <div class="user-info-wrapper header-links">
+                        <a class="user-info" href="javascript:void(0);">
+                            <img alt="" class="user-img" src="../../static/picture/user.png">
+                            <div class="blink-animation">
+                                <span class="blink-circle"></span>
+                                <span class="main-circle"></span>
                             </div>
+                        </a>
+                        <div class="user-info-box">
+                            <div class="drop-down-header">
+                                <h4>尊敬的用户</h4>
+                                <!--                                    <p>UI | UX Designer</p>-->
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="profile.html">
+                                        <i class="far fa-edit"></i> 编辑资料
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="setting.html">
+                                        <i class="fas fa-cog"></i> 设置
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../auth/login.html">
+                                        <i class="fas fa-sign-out-alt"></i> 退出
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- Sidebar Start -->
-        <aside class="sidebar-wrapper">
-            <div class="side-menu-wrap">
-                <ul class="main-menu">
-                    <li>
-                        <a href="javascript:void(0);" class="active">
+        </div>
+    </header>
+    <!-- Sidebar Start -->
+    <aside class="sidebar-wrapper">
+        <div class="side-menu-wrap">
+            <ul class="main-menu">
+                <li>
+                    <a class="active" href="javascript:void(0);">
                             <span class="icon-menu feather-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <svg class="feather feather-home" fill="none" stroke="currentColor"
+                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                     viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path
+                                        d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline
+                                        points="9 22 9 12 15 12 15 22"></polyline></svg>
                             </span>
-                            <span class="menu-text">
+                        <span class="menu-text">
                                 首页
                             </span>
                         </a>
@@ -143,593 +152,97 @@
                     <li>
                         <a href="{{url_for('recommend.track')}}">
                             <span class="icon-menu feather-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                <svg class="feather feather-users" fill="none" stroke="currentColor"
+                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                     viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path
+                                        d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7"
+                                                                                                     r="4"></circle><path
+                                        d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path
+                                        d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                             </span>
-                            <span class="menu-text">
+                        <span class="menu-text">
                                 我的足迹
                             </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url_for('recommend.all_film')}}">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url_for('recommend.all_film')}}">
                             <span class="icon-menu feather-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                <svg class="feather feather-users" fill="none" stroke="currentColor"
+                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                     viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path
+                                        d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7"
+                                                                                                     r="4"></circle><path
+                                        d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path
+                                        d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                             </span>
-                            <span class="menu-text">
+                        <span class="menu-text">
                                 影视库
                             </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-        <!-- Container Start -->
-        <div class="page-wrapper">
-            <div class="main-content">
-<!--                 Page Title Start -->
-				<h1>大家都在看</h1>
-                <div id="carouselExampleSlidesOnly" class="container" data-ride="carousel">
-                    <div class="carousel-inner">   <!-- carousel-inner -->
-                        <div class="carousel-item active">
-                            <div class="inline">
-                                <img src="../../static/picture/posters/6.jpg" class="d-block" alt="...">
-                            </div>
-                            <div class="inline">
-                                <img src="../../static/picture/posters/11.jpg" class="d-block" alt="...">
-                            </div>
-                            <div class="inline">
-                                <img src="../../static/picture/posters/12.jpg" class="d-block" alt="...">
-                            </div>
-                            <div class="inline">
-                                <img src="../../static/picture/posters/15.jpg" class="d-block" alt="...">
-                            </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <!-- Container Start -->
+    <div class="page-wrapper">
+        <div class="main-content">
+            <!--                 Page Title Start -->
+            <h1>大家都在看</h1>
+            <div class="container" data-ride="carousel" id="carouselExampleSlidesOnly">
+                <div class="carousel-inner">
+                    {% for i in range(0, 16, 4) %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        {% for movie in topmovies_wr_carousel[i:i+4] %}
+                        <div class="inline">
+                            <img alt="..." class="d-block"
+                                 src="{{url_for('static',filename='picture/posters/' ~ movie.movieId ~ '.jpg')}}">
                         </div>
-                        <div class="carousel-item">
-                            <div class="inline">
-                                <img src="../../static/picture/posters/15.jpg" class="d-block" alt="...">
-                            </div>
-                            <div class="inline">
-                                <img src="../../static/picture/posters/18.jpg" class="d-block" alt="...">
-                            </div>
-                            <div class="inline">
-                                <img src="../../static/picture/posters/19.jpg" class="d-block" alt="...">
-                            </div>
-                            <div class="inline">
-                                <img src="../../static/picture/posters/21.jpg" class="d-block" alt="...">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="inline">
-                                <img src="../../static/picture/posters/28.jpg" class="d-block" alt="...">
-                            </div>
-                            <div class="inline">
-                                <img src="../../static/picture/posters/33.jpg" class="d-block" alt="...">
-                            </div>
-                            <div class="inline">
-                                <img src="../../static/picture/posters/62.jpg" class="d-block" alt="...">
-                            </div>
-                            <div class="inline">
-                                <img src="../../static/picture/posters/63.jpg" class="d-block" alt="...">
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
-
+                    {% endfor %}
                 </div>
-				<h1>最热门电影</h1>
-                <div class="">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-						<div class="main-product-grid">
-							<ul class="container1">
-								<li>
-									<div class="product-grid">
-										<div class="product-item">
-											<a href="{{url_for('recommend.single')}}"><img src="../../static/picture/posters/137.jpg" alt="product-img"></a>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>{{context[0].title}}</h3>
-											<h6>犯罪</h6>
-											<p><span></span></p>
-										</div>
-									</div>
-								</li>
-								<li>
-
-									<div class="product-grid">
-										<div class="product-item">
-											<img src="../../static/picture/p2.png" alt="product-img">
-											<div class="product-ovr-links">
-												<ul>
-													<li>
-														<a href="product-single.html">
-															<svg xmlns="http://www.w3.org/2000/svg" width="17px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.949,4.171 L14.077,11.019 C13.972,11.258 13.752,11.410 13.501,11.410 L5.608,11.410 C5.325,11.410 5.073,11.215 5.000,10.932 L2.432,1.301 L0.629,1.301 C0.283,1.301 -0.000,1.008 -0.000,0.650 C-0.000,0.291 0.283,-0.002 0.629,-0.002 L2.903,-0.002 C3.186,-0.002 3.438,0.193 3.511,0.476 L6.079,10.107 L13.081,10.107 L15.408,4.562 L7.652,4.562 C7.306,4.562 7.023,4.269 7.023,3.910 C7.023,3.552 7.306,3.259 7.652,3.259 L16.373,3.259 C16.582,3.259 16.781,3.366 16.897,3.552 C17.012,3.737 17.033,3.964 16.949,4.171 ZM5.010,13.040 C5.796,13.040 6.436,13.704 6.436,14.519 C6.436,15.334 5.796,15.998 5.010,15.998 C4.224,15.998 3.585,15.334 3.585,14.519 C3.585,13.704 4.224,13.040 5.010,13.040 ZM13.825,13.040 C14.612,12.987 15.293,13.606 15.345,14.410 C15.366,14.813 15.251,15.192 15.000,15.486 C14.748,15.791 14.402,15.965 14.025,15.998 C13.993,15.998 13.951,15.998 13.920,15.998 C13.176,15.998 12.557,15.389 12.505,14.617 C12.452,13.813 13.039,13.095 13.825,13.040 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M14.766,14.570 L11.069,10.609 C12.020,9.445 12.540,7.981 12.540,6.456 C12.540,2.894 9.727,-0.002 6.269,-0.002 C2.812,-0.002 -0.002,2.894 -0.002,6.456 C-0.002,10.018 2.812,12.916 6.269,12.916 C7.567,12.916 8.804,12.512 9.862,11.747 L13.587,15.738 C13.742,15.905 13.952,15.997 14.176,15.997 C14.389,15.997 14.590,15.914 14.743,15.761 C15.068,15.439 15.078,14.904 14.766,14.570 ZM6.269,1.682 C8.825,1.682 10.904,3.823 10.904,6.456 C10.904,9.090 8.825,11.231 6.269,11.231 C3.714,11.231 1.634,9.090 1.634,6.456 C1.634,3.823 3.714,1.682 6.269,1.682 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="19px" height="17px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M17.224,2.226 C16.374,1.364 15.199,0.933 13.698,0.933 C13.283,0.933 12.860,1.009 12.428,1.156 C11.996,1.307 11.594,1.509 11.223,1.762 C10.851,2.016 10.531,2.254 10.263,2.476 C9.995,2.698 9.741,2.935 9.500,3.184 C9.259,2.935 9.004,2.698 8.737,2.476 C8.469,2.254 8.149,2.016 7.777,1.762 C7.406,1.509 7.004,1.307 6.572,1.156 C6.140,1.009 5.716,0.933 5.301,0.933 C3.801,0.933 2.626,1.364 1.776,2.226 C0.925,3.087 0.500,4.281 0.500,5.810 C0.500,6.275 0.579,6.754 0.736,7.247 C0.893,7.740 1.073,8.161 1.273,8.507 C1.474,8.855 1.702,9.193 1.956,9.524 C2.211,9.853 2.397,10.080 2.514,10.206 C2.631,10.330 2.723,10.421 2.790,10.477 L9.058,16.749 C9.178,16.873 9.326,16.935 9.500,16.935 C9.674,16.935 9.821,16.873 9.942,16.749 L16.200,10.497 C17.733,8.906 18.500,7.344 18.500,5.809 C18.500,4.281 18.075,3.087 17.224,2.226 ZM15.326,9.519 L9.500,15.342 L3.664,9.508 C2.412,8.209 1.786,6.976 1.786,5.809 C1.786,5.248 1.858,4.751 2.002,4.320 C2.146,3.890 2.330,3.548 2.554,3.292 C2.779,3.039 3.051,2.833 3.373,2.673 C3.694,2.514 4.009,2.406 4.317,2.350 C4.625,2.295 4.953,2.268 5.301,2.268 C5.650,2.268 6.025,2.355 6.426,2.533 C6.828,2.710 7.198,2.933 7.536,3.200 C7.874,3.467 8.164,3.717 8.405,3.950 C8.646,4.182 8.847,4.396 9.008,4.591 C9.128,4.744 9.292,4.819 9.500,4.819 C9.708,4.819 9.872,4.744 9.992,4.591 C10.153,4.396 10.354,4.182 10.595,3.950 C10.836,3.717 11.126,3.468 11.464,3.200 C11.802,2.933 12.172,2.710 12.574,2.533 C12.975,2.355 13.351,2.268 13.699,2.268 C14.047,2.268 14.375,2.295 14.683,2.350 C14.991,2.406 15.306,2.514 15.627,2.673 C15.949,2.833 16.222,3.039 16.446,3.292 C16.670,3.548 16.854,3.890 16.998,4.320 C17.142,4.751 17.214,5.248 17.214,5.809 C17.214,6.976 16.585,8.212 15.326,9.519 Z"></path>
-															</svg>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>Occasional Chair</h3>
-											<h6>Simply dummy text of the printing</h6>
-											<p><span>$80 </span>$50</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="product-grid">
-										<div class="product-item">
-											<img src="../../static/picture/p3.png" alt="product-img">
-											<div class="product-ovr-links">
-												<ul>
-													<li>
-														<a href="product-single.html">
-															<svg xmlns="http://www.w3.org/2000/svg" width="17px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.949,4.171 L14.077,11.019 C13.972,11.258 13.752,11.410 13.501,11.410 L5.608,11.410 C5.325,11.410 5.073,11.215 5.000,10.932 L2.432,1.301 L0.629,1.301 C0.283,1.301 -0.000,1.008 -0.000,0.650 C-0.000,0.291 0.283,-0.002 0.629,-0.002 L2.903,-0.002 C3.186,-0.002 3.438,0.193 3.511,0.476 L6.079,10.107 L13.081,10.107 L15.408,4.562 L7.652,4.562 C7.306,4.562 7.023,4.269 7.023,3.910 C7.023,3.552 7.306,3.259 7.652,3.259 L16.373,3.259 C16.582,3.259 16.781,3.366 16.897,3.552 C17.012,3.737 17.033,3.964 16.949,4.171 ZM5.010,13.040 C5.796,13.040 6.436,13.704 6.436,14.519 C6.436,15.334 5.796,15.998 5.010,15.998 C4.224,15.998 3.585,15.334 3.585,14.519 C3.585,13.704 4.224,13.040 5.010,13.040 ZM13.825,13.040 C14.612,12.987 15.293,13.606 15.345,14.410 C15.366,14.813 15.251,15.192 15.000,15.486 C14.748,15.791 14.402,15.965 14.025,15.998 C13.993,15.998 13.951,15.998 13.920,15.998 C13.176,15.998 12.557,15.389 12.505,14.617 C12.452,13.813 13.039,13.095 13.825,13.040 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M14.766,14.570 L11.069,10.609 C12.020,9.445 12.540,7.981 12.540,6.456 C12.540,2.894 9.727,-0.002 6.269,-0.002 C2.812,-0.002 -0.002,2.894 -0.002,6.456 C-0.002,10.018 2.812,12.916 6.269,12.916 C7.567,12.916 8.804,12.512 9.862,11.747 L13.587,15.738 C13.742,15.905 13.952,15.997 14.176,15.997 C14.389,15.997 14.590,15.914 14.743,15.761 C15.068,15.439 15.078,14.904 14.766,14.570 ZM6.269,1.682 C8.825,1.682 10.904,3.823 10.904,6.456 C10.904,9.090 8.825,11.231 6.269,11.231 C3.714,11.231 1.634,9.090 1.634,6.456 C1.634,3.823 3.714,1.682 6.269,1.682 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="19px" height="17px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M17.224,2.226 C16.374,1.364 15.199,0.933 13.698,0.933 C13.283,0.933 12.860,1.009 12.428,1.156 C11.996,1.307 11.594,1.509 11.223,1.762 C10.851,2.016 10.531,2.254 10.263,2.476 C9.995,2.698 9.741,2.935 9.500,3.184 C9.259,2.935 9.004,2.698 8.737,2.476 C8.469,2.254 8.149,2.016 7.777,1.762 C7.406,1.509 7.004,1.307 6.572,1.156 C6.140,1.009 5.716,0.933 5.301,0.933 C3.801,0.933 2.626,1.364 1.776,2.226 C0.925,3.087 0.500,4.281 0.500,5.810 C0.500,6.275 0.579,6.754 0.736,7.247 C0.893,7.740 1.073,8.161 1.273,8.507 C1.474,8.855 1.702,9.193 1.956,9.524 C2.211,9.853 2.397,10.080 2.514,10.206 C2.631,10.330 2.723,10.421 2.790,10.477 L9.058,16.749 C9.178,16.873 9.326,16.935 9.500,16.935 C9.674,16.935 9.821,16.873 9.942,16.749 L16.200,10.497 C17.733,8.906 18.500,7.344 18.500,5.809 C18.500,4.281 18.075,3.087 17.224,2.226 ZM15.326,9.519 L9.500,15.342 L3.664,9.508 C2.412,8.209 1.786,6.976 1.786,5.809 C1.786,5.248 1.858,4.751 2.002,4.320 C2.146,3.890 2.330,3.548 2.554,3.292 C2.779,3.039 3.051,2.833 3.373,2.673 C3.694,2.514 4.009,2.406 4.317,2.350 C4.625,2.295 4.953,2.268 5.301,2.268 C5.650,2.268 6.025,2.355 6.426,2.533 C6.828,2.710 7.198,2.933 7.536,3.200 C7.874,3.467 8.164,3.717 8.405,3.950 C8.646,4.182 8.847,4.396 9.008,4.591 C9.128,4.744 9.292,4.819 9.500,4.819 C9.708,4.819 9.872,4.744 9.992,4.591 C10.153,4.396 10.354,4.182 10.595,3.950 C10.836,3.717 11.126,3.468 11.464,3.200 C11.802,2.933 12.172,2.710 12.574,2.533 C12.975,2.355 13.351,2.268 13.699,2.268 C14.047,2.268 14.375,2.295 14.683,2.350 C14.991,2.406 15.306,2.514 15.627,2.673 C15.949,2.833 16.222,3.039 16.446,3.292 C16.670,3.548 16.854,3.890 16.998,4.320 C17.142,4.751 17.214,5.248 17.214,5.809 C17.214,6.976 16.585,8.212 15.326,9.519 Z"></path>
-															</svg>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>Ceiling Light</h3>
-											<h6>Simply dummy text of the printing</h6>
-											<p><span>$90 </span>$55</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="product-grid">
-										<div class="product-item">
-											<img src="../../static/picture/p4.png" alt="product-img">
-											<div class="product-ovr-links">
-												<ul>
-													<li>
-														<a href="product-single.html">
-															<svg xmlns="http://www.w3.org/2000/svg" width="17px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.949,4.171 L14.077,11.019 C13.972,11.258 13.752,11.410 13.501,11.410 L5.608,11.410 C5.325,11.410 5.073,11.215 5.000,10.932 L2.432,1.301 L0.629,1.301 C0.283,1.301 -0.000,1.008 -0.000,0.650 C-0.000,0.291 0.283,-0.002 0.629,-0.002 L2.903,-0.002 C3.186,-0.002 3.438,0.193 3.511,0.476 L6.079,10.107 L13.081,10.107 L15.408,4.562 L7.652,4.562 C7.306,4.562 7.023,4.269 7.023,3.910 C7.023,3.552 7.306,3.259 7.652,3.259 L16.373,3.259 C16.582,3.259 16.781,3.366 16.897,3.552 C17.012,3.737 17.033,3.964 16.949,4.171 ZM5.010,13.040 C5.796,13.040 6.436,13.704 6.436,14.519 C6.436,15.334 5.796,15.998 5.010,15.998 C4.224,15.998 3.585,15.334 3.585,14.519 C3.585,13.704 4.224,13.040 5.010,13.040 ZM13.825,13.040 C14.612,12.987 15.293,13.606 15.345,14.410 C15.366,14.813 15.251,15.192 15.000,15.486 C14.748,15.791 14.402,15.965 14.025,15.998 C13.993,15.998 13.951,15.998 13.920,15.998 C13.176,15.998 12.557,15.389 12.505,14.617 C12.452,13.813 13.039,13.095 13.825,13.040 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M14.766,14.570 L11.069,10.609 C12.020,9.445 12.540,7.981 12.540,6.456 C12.540,2.894 9.727,-0.002 6.269,-0.002 C2.812,-0.002 -0.002,2.894 -0.002,6.456 C-0.002,10.018 2.812,12.916 6.269,12.916 C7.567,12.916 8.804,12.512 9.862,11.747 L13.587,15.738 C13.742,15.905 13.952,15.997 14.176,15.997 C14.389,15.997 14.590,15.914 14.743,15.761 C15.068,15.439 15.078,14.904 14.766,14.570 ZM6.269,1.682 C8.825,1.682 10.904,3.823 10.904,6.456 C10.904,9.090 8.825,11.231 6.269,11.231 C3.714,11.231 1.634,9.090 1.634,6.456 C1.634,3.823 3.714,1.682 6.269,1.682 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="19px" height="17px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M17.224,2.226 C16.374,1.364 15.199,0.933 13.698,0.933 C13.283,0.933 12.860,1.009 12.428,1.156 C11.996,1.307 11.594,1.509 11.223,1.762 C10.851,2.016 10.531,2.254 10.263,2.476 C9.995,2.698 9.741,2.935 9.500,3.184 C9.259,2.935 9.004,2.698 8.737,2.476 C8.469,2.254 8.149,2.016 7.777,1.762 C7.406,1.509 7.004,1.307 6.572,1.156 C6.140,1.009 5.716,0.933 5.301,0.933 C3.801,0.933 2.626,1.364 1.776,2.226 C0.925,3.087 0.500,4.281 0.500,5.810 C0.500,6.275 0.579,6.754 0.736,7.247 C0.893,7.740 1.073,8.161 1.273,8.507 C1.474,8.855 1.702,9.193 1.956,9.524 C2.211,9.853 2.397,10.080 2.514,10.206 C2.631,10.330 2.723,10.421 2.790,10.477 L9.058,16.749 C9.178,16.873 9.326,16.935 9.500,16.935 C9.674,16.935 9.821,16.873 9.942,16.749 L16.200,10.497 C17.733,8.906 18.500,7.344 18.500,5.809 C18.500,4.281 18.075,3.087 17.224,2.226 ZM15.326,9.519 L9.500,15.342 L3.664,9.508 C2.412,8.209 1.786,6.976 1.786,5.809 C1.786,5.248 1.858,4.751 2.002,4.320 C2.146,3.890 2.330,3.548 2.554,3.292 C2.779,3.039 3.051,2.833 3.373,2.673 C3.694,2.514 4.009,2.406 4.317,2.350 C4.625,2.295 4.953,2.268 5.301,2.268 C5.650,2.268 6.025,2.355 6.426,2.533 C6.828,2.710 7.198,2.933 7.536,3.200 C7.874,3.467 8.164,3.717 8.405,3.950 C8.646,4.182 8.847,4.396 9.008,4.591 C9.128,4.744 9.292,4.819 9.500,4.819 C9.708,4.819 9.872,4.744 9.992,4.591 C10.153,4.396 10.354,4.182 10.595,3.950 C10.836,3.717 11.126,3.468 11.464,3.200 C11.802,2.933 12.172,2.710 12.574,2.533 C12.975,2.355 13.351,2.268 13.699,2.268 C14.047,2.268 14.375,2.295 14.683,2.350 C14.991,2.406 15.306,2.514 15.627,2.673 C15.949,2.833 16.222,3.039 16.446,3.292 C16.670,3.548 16.854,3.890 16.998,4.320 C17.142,4.751 17.214,5.248 17.214,5.809 C17.214,6.976 16.585,8.212 15.326,9.519 Z"></path>
-															</svg>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>Ceiling Light</h3>
-											<h6>Simply dummy text of the printing</h6>
-											<p><span>$110 </span>$90</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="product-grid">
-										<div class="product-item">
-											<img src="../../static/picture/p5.png" alt="product-img">
-											<div class="product-ovr-links">
-												<ul>
-													<li>
-														<a href="product-single.html">
-															<svg xmlns="http://www.w3.org/2000/svg" width="17px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.949,4.171 L14.077,11.019 C13.972,11.258 13.752,11.410 13.501,11.410 L5.608,11.410 C5.325,11.410 5.073,11.215 5.000,10.932 L2.432,1.301 L0.629,1.301 C0.283,1.301 -0.000,1.008 -0.000,0.650 C-0.000,0.291 0.283,-0.002 0.629,-0.002 L2.903,-0.002 C3.186,-0.002 3.438,0.193 3.511,0.476 L6.079,10.107 L13.081,10.107 L15.408,4.562 L7.652,4.562 C7.306,4.562 7.023,4.269 7.023,3.910 C7.023,3.552 7.306,3.259 7.652,3.259 L16.373,3.259 C16.582,3.259 16.781,3.366 16.897,3.552 C17.012,3.737 17.033,3.964 16.949,4.171 ZM5.010,13.040 C5.796,13.040 6.436,13.704 6.436,14.519 C6.436,15.334 5.796,15.998 5.010,15.998 C4.224,15.998 3.585,15.334 3.585,14.519 C3.585,13.704 4.224,13.040 5.010,13.040 ZM13.825,13.040 C14.612,12.987 15.293,13.606 15.345,14.410 C15.366,14.813 15.251,15.192 15.000,15.486 C14.748,15.791 14.402,15.965 14.025,15.998 C13.993,15.998 13.951,15.998 13.920,15.998 C13.176,15.998 12.557,15.389 12.505,14.617 C12.452,13.813 13.039,13.095 13.825,13.040 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M14.766,14.570 L11.069,10.609 C12.020,9.445 12.540,7.981 12.540,6.456 C12.540,2.894 9.727,-0.002 6.269,-0.002 C2.812,-0.002 -0.002,2.894 -0.002,6.456 C-0.002,10.018 2.812,12.916 6.269,12.916 C7.567,12.916 8.804,12.512 9.862,11.747 L13.587,15.738 C13.742,15.905 13.952,15.997 14.176,15.997 C14.389,15.997 14.590,15.914 14.743,15.761 C15.068,15.439 15.078,14.904 14.766,14.570 ZM6.269,1.682 C8.825,1.682 10.904,3.823 10.904,6.456 C10.904,9.090 8.825,11.231 6.269,11.231 C3.714,11.231 1.634,9.090 1.634,6.456 C1.634,3.823 3.714,1.682 6.269,1.682 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="19px" height="17px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M17.224,2.226 C16.374,1.364 15.199,0.933 13.698,0.933 C13.283,0.933 12.860,1.009 12.428,1.156 C11.996,1.307 11.594,1.509 11.223,1.762 C10.851,2.016 10.531,2.254 10.263,2.476 C9.995,2.698 9.741,2.935 9.500,3.184 C9.259,2.935 9.004,2.698 8.737,2.476 C8.469,2.254 8.149,2.016 7.777,1.762 C7.406,1.509 7.004,1.307 6.572,1.156 C6.140,1.009 5.716,0.933 5.301,0.933 C3.801,0.933 2.626,1.364 1.776,2.226 C0.925,3.087 0.500,4.281 0.500,5.810 C0.500,6.275 0.579,6.754 0.736,7.247 C0.893,7.740 1.073,8.161 1.273,8.507 C1.474,8.855 1.702,9.193 1.956,9.524 C2.211,9.853 2.397,10.080 2.514,10.206 C2.631,10.330 2.723,10.421 2.790,10.477 L9.058,16.749 C9.178,16.873 9.326,16.935 9.500,16.935 C9.674,16.935 9.821,16.873 9.942,16.749 L16.200,10.497 C17.733,8.906 18.500,7.344 18.500,5.809 C18.500,4.281 18.075,3.087 17.224,2.226 ZM15.326,9.519 L9.500,15.342 L3.664,9.508 C2.412,8.209 1.786,6.976 1.786,5.809 C1.786,5.248 1.858,4.751 2.002,4.320 C2.146,3.890 2.330,3.548 2.554,3.292 C2.779,3.039 3.051,2.833 3.373,2.673 C3.694,2.514 4.009,2.406 4.317,2.350 C4.625,2.295 4.953,2.268 5.301,2.268 C5.650,2.268 6.025,2.355 6.426,2.533 C6.828,2.710 7.198,2.933 7.536,3.200 C7.874,3.467 8.164,3.717 8.405,3.950 C8.646,4.182 8.847,4.396 9.008,4.591 C9.128,4.744 9.292,4.819 9.500,4.819 C9.708,4.819 9.872,4.744 9.992,4.591 C10.153,4.396 10.354,4.182 10.595,3.950 C10.836,3.717 11.126,3.468 11.464,3.200 C11.802,2.933 12.172,2.710 12.574,2.533 C12.975,2.355 13.351,2.268 13.699,2.268 C14.047,2.268 14.375,2.295 14.683,2.350 C14.991,2.406 15.306,2.514 15.627,2.673 C15.949,2.833 16.222,3.039 16.446,3.292 C16.670,3.548 16.854,3.890 16.998,4.320 C17.142,4.751 17.214,5.248 17.214,5.809 C17.214,6.976 16.585,8.212 15.326,9.519 Z"></path>
-															</svg>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>Yellow Chair</h3>
-											<h6>Simply dummy text of the printing</h6>
-											<p><span>$200 </span>$180</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="product-grid">
-										<div class="product-item">
-											<img src="../../static/picture/p6.png" alt="product-img">
-											<div class="product-ovr-links">
-												<ul>
-													<li>
-														<a href="product-single.html">
-															<svg xmlns="http://www.w3.org/2000/svg" width="17px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.949,4.171 L14.077,11.019 C13.972,11.258 13.752,11.410 13.501,11.410 L5.608,11.410 C5.325,11.410 5.073,11.215 5.000,10.932 L2.432,1.301 L0.629,1.301 C0.283,1.301 -0.000,1.008 -0.000,0.650 C-0.000,0.291 0.283,-0.002 0.629,-0.002 L2.903,-0.002 C3.186,-0.002 3.438,0.193 3.511,0.476 L6.079,10.107 L13.081,10.107 L15.408,4.562 L7.652,4.562 C7.306,4.562 7.023,4.269 7.023,3.910 C7.023,3.552 7.306,3.259 7.652,3.259 L16.373,3.259 C16.582,3.259 16.781,3.366 16.897,3.552 C17.012,3.737 17.033,3.964 16.949,4.171 ZM5.010,13.040 C5.796,13.040 6.436,13.704 6.436,14.519 C6.436,15.334 5.796,15.998 5.010,15.998 C4.224,15.998 3.585,15.334 3.585,14.519 C3.585,13.704 4.224,13.040 5.010,13.040 ZM13.825,13.040 C14.612,12.987 15.293,13.606 15.345,14.410 C15.366,14.813 15.251,15.192 15.000,15.486 C14.748,15.791 14.402,15.965 14.025,15.998 C13.993,15.998 13.951,15.998 13.920,15.998 C13.176,15.998 12.557,15.389 12.505,14.617 C12.452,13.813 13.039,13.095 13.825,13.040 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M14.766,14.570 L11.069,10.609 C12.020,9.445 12.540,7.981 12.540,6.456 C12.540,2.894 9.727,-0.002 6.269,-0.002 C2.812,-0.002 -0.002,2.894 -0.002,6.456 C-0.002,10.018 2.812,12.916 6.269,12.916 C7.567,12.916 8.804,12.512 9.862,11.747 L13.587,15.738 C13.742,15.905 13.952,15.997 14.176,15.997 C14.389,15.997 14.590,15.914 14.743,15.761 C15.068,15.439 15.078,14.904 14.766,14.570 ZM6.269,1.682 C8.825,1.682 10.904,3.823 10.904,6.456 C10.904,9.090 8.825,11.231 6.269,11.231 C3.714,11.231 1.634,9.090 1.634,6.456 C1.634,3.823 3.714,1.682 6.269,1.682 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="19px" height="17px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M17.224,2.226 C16.374,1.364 15.199,0.933 13.698,0.933 C13.283,0.933 12.860,1.009 12.428,1.156 C11.996,1.307 11.594,1.509 11.223,1.762 C10.851,2.016 10.531,2.254 10.263,2.476 C9.995,2.698 9.741,2.935 9.500,3.184 C9.259,2.935 9.004,2.698 8.737,2.476 C8.469,2.254 8.149,2.016 7.777,1.762 C7.406,1.509 7.004,1.307 6.572,1.156 C6.140,1.009 5.716,0.933 5.301,0.933 C3.801,0.933 2.626,1.364 1.776,2.226 C0.925,3.087 0.500,4.281 0.500,5.810 C0.500,6.275 0.579,6.754 0.736,7.247 C0.893,7.740 1.073,8.161 1.273,8.507 C1.474,8.855 1.702,9.193 1.956,9.524 C2.211,9.853 2.397,10.080 2.514,10.206 C2.631,10.330 2.723,10.421 2.790,10.477 L9.058,16.749 C9.178,16.873 9.326,16.935 9.500,16.935 C9.674,16.935 9.821,16.873 9.942,16.749 L16.200,10.497 C17.733,8.906 18.500,7.344 18.500,5.809 C18.500,4.281 18.075,3.087 17.224,2.226 ZM15.326,9.519 L9.500,15.342 L3.664,9.508 C2.412,8.209 1.786,6.976 1.786,5.809 C1.786,5.248 1.858,4.751 2.002,4.320 C2.146,3.890 2.330,3.548 2.554,3.292 C2.779,3.039 3.051,2.833 3.373,2.673 C3.694,2.514 4.009,2.406 4.317,2.350 C4.625,2.295 4.953,2.268 5.301,2.268 C5.650,2.268 6.025,2.355 6.426,2.533 C6.828,2.710 7.198,2.933 7.536,3.200 C7.874,3.467 8.164,3.717 8.405,3.950 C8.646,4.182 8.847,4.396 9.008,4.591 C9.128,4.744 9.292,4.819 9.500,4.819 C9.708,4.819 9.872,4.744 9.992,4.591 C10.153,4.396 10.354,4.182 10.595,3.950 C10.836,3.717 11.126,3.468 11.464,3.200 C11.802,2.933 12.172,2.710 12.574,2.533 C12.975,2.355 13.351,2.268 13.699,2.268 C14.047,2.268 14.375,2.295 14.683,2.350 C14.991,2.406 15.306,2.514 15.627,2.673 C15.949,2.833 16.222,3.039 16.446,3.292 C16.670,3.548 16.854,3.890 16.998,4.320 C17.142,4.751 17.214,5.248 17.214,5.809 C17.214,6.976 16.585,8.212 15.326,9.519 Z"></path>
-															</svg>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>Ceiling Light</h3>
-											<h6>Simply dummy text of the printing</h6>
-											<p><span>$80 </span>$75</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="product-grid">
-										<div class="product-item">
-											<img src="../../static/picture/p7.png" alt="product-img">
-											<div class="product-ovr-links">
-												<ul>
-													<li>
-														<a href="product-single.html">
-															<svg xmlns="http://www.w3.org/2000/svg" width="17px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.949,4.171 L14.077,11.019 C13.972,11.258 13.752,11.410 13.501,11.410 L5.608,11.410 C5.325,11.410 5.073,11.215 5.000,10.932 L2.432,1.301 L0.629,1.301 C0.283,1.301 -0.000,1.008 -0.000,0.650 C-0.000,0.291 0.283,-0.002 0.629,-0.002 L2.903,-0.002 C3.186,-0.002 3.438,0.193 3.511,0.476 L6.079,10.107 L13.081,10.107 L15.408,4.562 L7.652,4.562 C7.306,4.562 7.023,4.269 7.023,3.910 C7.023,3.552 7.306,3.259 7.652,3.259 L16.373,3.259 C16.582,3.259 16.781,3.366 16.897,3.552 C17.012,3.737 17.033,3.964 16.949,4.171 ZM5.010,13.040 C5.796,13.040 6.436,13.704 6.436,14.519 C6.436,15.334 5.796,15.998 5.010,15.998 C4.224,15.998 3.585,15.334 3.585,14.519 C3.585,13.704 4.224,13.040 5.010,13.040 ZM13.825,13.040 C14.612,12.987 15.293,13.606 15.345,14.410 C15.366,14.813 15.251,15.192 15.000,15.486 C14.748,15.791 14.402,15.965 14.025,15.998 C13.993,15.998 13.951,15.998 13.920,15.998 C13.176,15.998 12.557,15.389 12.505,14.617 C12.452,13.813 13.039,13.095 13.825,13.040 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M14.766,14.570 L11.069,10.609 C12.020,9.445 12.540,7.981 12.540,6.456 C12.540,2.894 9.727,-0.002 6.269,-0.002 C2.812,-0.002 -0.002,2.894 -0.002,6.456 C-0.002,10.018 2.812,12.916 6.269,12.916 C7.567,12.916 8.804,12.512 9.862,11.747 L13.587,15.738 C13.742,15.905 13.952,15.997 14.176,15.997 C14.389,15.997 14.590,15.914 14.743,15.761 C15.068,15.439 15.078,14.904 14.766,14.570 ZM6.269,1.682 C8.825,1.682 10.904,3.823 10.904,6.456 C10.904,9.090 8.825,11.231 6.269,11.231 C3.714,11.231 1.634,9.090 1.634,6.456 C1.634,3.823 3.714,1.682 6.269,1.682 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="19px" height="17px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M17.224,2.226 C16.374,1.364 15.199,0.933 13.698,0.933 C13.283,0.933 12.860,1.009 12.428,1.156 C11.996,1.307 11.594,1.509 11.223,1.762 C10.851,2.016 10.531,2.254 10.263,2.476 C9.995,2.698 9.741,2.935 9.500,3.184 C9.259,2.935 9.004,2.698 8.737,2.476 C8.469,2.254 8.149,2.016 7.777,1.762 C7.406,1.509 7.004,1.307 6.572,1.156 C6.140,1.009 5.716,0.933 5.301,0.933 C3.801,0.933 2.626,1.364 1.776,2.226 C0.925,3.087 0.500,4.281 0.500,5.810 C0.500,6.275 0.579,6.754 0.736,7.247 C0.893,7.740 1.073,8.161 1.273,8.507 C1.474,8.855 1.702,9.193 1.956,9.524 C2.211,9.853 2.397,10.080 2.514,10.206 C2.631,10.330 2.723,10.421 2.790,10.477 L9.058,16.749 C9.178,16.873 9.326,16.935 9.500,16.935 C9.674,16.935 9.821,16.873 9.942,16.749 L16.200,10.497 C17.733,8.906 18.500,7.344 18.500,5.809 C18.500,4.281 18.075,3.087 17.224,2.226 ZM15.326,9.519 L9.500,15.342 L3.664,9.508 C2.412,8.209 1.786,6.976 1.786,5.809 C1.786,5.248 1.858,4.751 2.002,4.320 C2.146,3.890 2.330,3.548 2.554,3.292 C2.779,3.039 3.051,2.833 3.373,2.673 C3.694,2.514 4.009,2.406 4.317,2.350 C4.625,2.295 4.953,2.268 5.301,2.268 C5.650,2.268 6.025,2.355 6.426,2.533 C6.828,2.710 7.198,2.933 7.536,3.200 C7.874,3.467 8.164,3.717 8.405,3.950 C8.646,4.182 8.847,4.396 9.008,4.591 C9.128,4.744 9.292,4.819 9.500,4.819 C9.708,4.819 9.872,4.744 9.992,4.591 C10.153,4.396 10.354,4.182 10.595,3.950 C10.836,3.717 11.126,3.468 11.464,3.200 C11.802,2.933 12.172,2.710 12.574,2.533 C12.975,2.355 13.351,2.268 13.699,2.268 C14.047,2.268 14.375,2.295 14.683,2.350 C14.991,2.406 15.306,2.514 15.627,2.673 C15.949,2.833 16.222,3.039 16.446,3.292 C16.670,3.548 16.854,3.890 16.998,4.320 C17.142,4.751 17.214,5.248 17.214,5.809 C17.214,6.976 16.585,8.212 15.326,9.519 Z"></path>
-															</svg>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>Wooden Chair</h3>
-											<h6>Simply dummy text of the printing</h6>
-											<p><span>$120 </span>$110</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="product-grid">
-										<div class="product-item">
-											<img src="../../static/picture/p8.png" alt="product-img">
-											<div class="product-ovr-links">
-												<ul>
-													<li>
-														<a href="product-single.html">
-															<svg xmlns="http://www.w3.org/2000/svg" width="17px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.949,4.171 L14.077,11.019 C13.972,11.258 13.752,11.410 13.501,11.410 L5.608,11.410 C5.325,11.410 5.073,11.215 5.000,10.932 L2.432,1.301 L0.629,1.301 C0.283,1.301 -0.000,1.008 -0.000,0.650 C-0.000,0.291 0.283,-0.002 0.629,-0.002 L2.903,-0.002 C3.186,-0.002 3.438,0.193 3.511,0.476 L6.079,10.107 L13.081,10.107 L15.408,4.562 L7.652,4.562 C7.306,4.562 7.023,4.269 7.023,3.910 C7.023,3.552 7.306,3.259 7.652,3.259 L16.373,3.259 C16.582,3.259 16.781,3.366 16.897,3.552 C17.012,3.737 17.033,3.964 16.949,4.171 ZM5.010,13.040 C5.796,13.040 6.436,13.704 6.436,14.519 C6.436,15.334 5.796,15.998 5.010,15.998 C4.224,15.998 3.585,15.334 3.585,14.519 C3.585,13.704 4.224,13.040 5.010,13.040 ZM13.825,13.040 C14.612,12.987 15.293,13.606 15.345,14.410 C15.366,14.813 15.251,15.192 15.000,15.486 C14.748,15.791 14.402,15.965 14.025,15.998 C13.993,15.998 13.951,15.998 13.920,15.998 C13.176,15.998 12.557,15.389 12.505,14.617 C12.452,13.813 13.039,13.095 13.825,13.040 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M14.766,14.570 L11.069,10.609 C12.020,9.445 12.540,7.981 12.540,6.456 C12.540,2.894 9.727,-0.002 6.269,-0.002 C2.812,-0.002 -0.002,2.894 -0.002,6.456 C-0.002,10.018 2.812,12.916 6.269,12.916 C7.567,12.916 8.804,12.512 9.862,11.747 L13.587,15.738 C13.742,15.905 13.952,15.997 14.176,15.997 C14.389,15.997 14.590,15.914 14.743,15.761 C15.068,15.439 15.078,14.904 14.766,14.570 ZM6.269,1.682 C8.825,1.682 10.904,3.823 10.904,6.456 C10.904,9.090 8.825,11.231 6.269,11.231 C3.714,11.231 1.634,9.090 1.634,6.456 C1.634,3.823 3.714,1.682 6.269,1.682 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="19px" height="17px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M17.224,2.226 C16.374,1.364 15.199,0.933 13.698,0.933 C13.283,0.933 12.860,1.009 12.428,1.156 C11.996,1.307 11.594,1.509 11.223,1.762 C10.851,2.016 10.531,2.254 10.263,2.476 C9.995,2.698 9.741,2.935 9.500,3.184 C9.259,2.935 9.004,2.698 8.737,2.476 C8.469,2.254 8.149,2.016 7.777,1.762 C7.406,1.509 7.004,1.307 6.572,1.156 C6.140,1.009 5.716,0.933 5.301,0.933 C3.801,0.933 2.626,1.364 1.776,2.226 C0.925,3.087 0.500,4.281 0.500,5.810 C0.500,6.275 0.579,6.754 0.736,7.247 C0.893,7.740 1.073,8.161 1.273,8.507 C1.474,8.855 1.702,9.193 1.956,9.524 C2.211,9.853 2.397,10.080 2.514,10.206 C2.631,10.330 2.723,10.421 2.790,10.477 L9.058,16.749 C9.178,16.873 9.326,16.935 9.500,16.935 C9.674,16.935 9.821,16.873 9.942,16.749 L16.200,10.497 C17.733,8.906 18.500,7.344 18.500,5.809 C18.500,4.281 18.075,3.087 17.224,2.226 ZM15.326,9.519 L9.500,15.342 L3.664,9.508 C2.412,8.209 1.786,6.976 1.786,5.809 C1.786,5.248 1.858,4.751 2.002,4.320 C2.146,3.890 2.330,3.548 2.554,3.292 C2.779,3.039 3.051,2.833 3.373,2.673 C3.694,2.514 4.009,2.406 4.317,2.350 C4.625,2.295 4.953,2.268 5.301,2.268 C5.650,2.268 6.025,2.355 6.426,2.533 C6.828,2.710 7.198,2.933 7.536,3.200 C7.874,3.467 8.164,3.717 8.405,3.950 C8.646,4.182 8.847,4.396 9.008,4.591 C9.128,4.744 9.292,4.819 9.500,4.819 C9.708,4.819 9.872,4.744 9.992,4.591 C10.153,4.396 10.354,4.182 10.595,3.950 C10.836,3.717 11.126,3.468 11.464,3.200 C11.802,2.933 12.172,2.710 12.574,2.533 C12.975,2.355 13.351,2.268 13.699,2.268 C14.047,2.268 14.375,2.295 14.683,2.350 C14.991,2.406 15.306,2.514 15.627,2.673 C15.949,2.833 16.222,3.039 16.446,3.292 C16.670,3.548 16.854,3.890 16.998,4.320 C17.142,4.751 17.214,5.248 17.214,5.809 C17.214,6.976 16.585,8.212 15.326,9.519 Z"></path>
-															</svg>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>Ceiling Light</h3>
-											<h6>Simply dummy text of the printing</h6>
-											<p><span>$90 </span>$80</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="product-grid">
-										<div class="product-item">
-											<img src="../../static/picture/p1.png" alt="product-img">
-											<div class="product-overlay"><h4>sale</h4></div>
-											<div class="product-ovr-links">
-												<ul>
-													<li>
-														<a href="product-single.html">
-															<svg xmlns="http://www.w3.org/2000/svg" width="17px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.949,4.171 L14.077,11.019 C13.972,11.258 13.752,11.410 13.501,11.410 L5.608,11.410 C5.325,11.410 5.073,11.215 5.000,10.932 L2.432,1.301 L0.629,1.301 C0.283,1.301 -0.000,1.008 -0.000,0.650 C-0.000,0.291 0.283,-0.002 0.629,-0.002 L2.903,-0.002 C3.186,-0.002 3.438,0.193 3.511,0.476 L6.079,10.107 L13.081,10.107 L15.408,4.562 L7.652,4.562 C7.306,4.562 7.023,4.269 7.023,3.910 C7.023,3.552 7.306,3.259 7.652,3.259 L16.373,3.259 C16.582,3.259 16.781,3.366 16.897,3.552 C17.012,3.737 17.033,3.964 16.949,4.171 ZM5.010,13.040 C5.796,13.040 6.436,13.704 6.436,14.519 C6.436,15.334 5.796,15.998 5.010,15.998 C4.224,15.998 3.585,15.334 3.585,14.519 C3.585,13.704 4.224,13.040 5.010,13.040 ZM13.825,13.040 C14.612,12.987 15.293,13.606 15.345,14.410 C15.366,14.813 15.251,15.192 15.000,15.486 C14.748,15.791 14.402,15.965 14.025,15.998 C13.993,15.998 13.951,15.998 13.920,15.998 C13.176,15.998 12.557,15.389 12.505,14.617 C12.452,13.813 13.039,13.095 13.825,13.040 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M14.766,14.570 L11.069,10.609 C12.020,9.445 12.540,7.981 12.540,6.456 C12.540,2.894 9.727,-0.002 6.269,-0.002 C2.812,-0.002 -0.002,2.894 -0.002,6.456 C-0.002,10.018 2.812,12.916 6.269,12.916 C7.567,12.916 8.804,12.512 9.862,11.747 L13.587,15.738 C13.742,15.905 13.952,15.997 14.176,15.997 C14.389,15.997 14.590,15.914 14.743,15.761 C15.068,15.439 15.078,14.904 14.766,14.570 ZM6.269,1.682 C8.825,1.682 10.904,3.823 10.904,6.456 C10.904,9.090 8.825,11.231 6.269,11.231 C3.714,11.231 1.634,9.090 1.634,6.456 C1.634,3.823 3.714,1.682 6.269,1.682 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="19px" height="17px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M17.224,2.226 C16.374,1.364 15.199,0.933 13.698,0.933 C13.283,0.933 12.860,1.009 12.428,1.156 C11.996,1.307 11.594,1.509 11.223,1.762 C10.851,2.016 10.531,2.254 10.263,2.476 C9.995,2.698 9.741,2.935 9.500,3.184 C9.259,2.935 9.004,2.698 8.737,2.476 C8.469,2.254 8.149,2.016 7.777,1.762 C7.406,1.509 7.004,1.307 6.572,1.156 C6.140,1.009 5.716,0.933 5.301,0.933 C3.801,0.933 2.626,1.364 1.776,2.226 C0.925,3.087 0.500,4.281 0.500,5.810 C0.500,6.275 0.579,6.754 0.736,7.247 C0.893,7.740 1.073,8.161 1.273,8.507 C1.474,8.855 1.702,9.193 1.956,9.524 C2.211,9.853 2.397,10.080 2.514,10.206 C2.631,10.330 2.723,10.421 2.790,10.477 L9.058,16.749 C9.178,16.873 9.326,16.935 9.500,16.935 C9.674,16.935 9.821,16.873 9.942,16.749 L16.200,10.497 C17.733,8.906 18.500,7.344 18.500,5.809 C18.500,4.281 18.075,3.087 17.224,2.226 ZM15.326,9.519 L9.500,15.342 L3.664,9.508 C2.412,8.209 1.786,6.976 1.786,5.809 C1.786,5.248 1.858,4.751 2.002,4.320 C2.146,3.890 2.330,3.548 2.554,3.292 C2.779,3.039 3.051,2.833 3.373,2.673 C3.694,2.514 4.009,2.406 4.317,2.350 C4.625,2.295 4.953,2.268 5.301,2.268 C5.650,2.268 6.025,2.355 6.426,2.533 C6.828,2.710 7.198,2.933 7.536,3.200 C7.874,3.467 8.164,3.717 8.405,3.950 C8.646,4.182 8.847,4.396 9.008,4.591 C9.128,4.744 9.292,4.819 9.500,4.819 C9.708,4.819 9.872,4.744 9.992,4.591 C10.153,4.396 10.354,4.182 10.595,3.950 C10.836,3.717 11.126,3.468 11.464,3.200 C11.802,2.933 12.172,2.710 12.574,2.533 C12.975,2.355 13.351,2.268 13.699,2.268 C14.047,2.268 14.375,2.295 14.683,2.350 C14.991,2.406 15.306,2.514 15.627,2.673 C15.949,2.833 16.222,3.039 16.446,3.292 C16.670,3.548 16.854,3.890 16.998,4.320 C17.142,4.751 17.214,5.248 17.214,5.809 C17.214,6.976 16.585,8.212 15.326,9.519 Z"></path>
-															</svg>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>Dining Chair</h3>
-											<h6>Simply dummy text of the printing</h6>
-											<p><span>$100 </span>$60</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="product-grid">
-										<div class="product-item">
-											<img src="../../static/picture/p2.png" alt="product-img">
-											<div class="product-ovr-links">
-												<ul>
-													<li>
-														<a href="product-single.html">
-															<svg xmlns="http://www.w3.org/2000/svg" width="17px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.949,4.171 L14.077,11.019 C13.972,11.258 13.752,11.410 13.501,11.410 L5.608,11.410 C5.325,11.410 5.073,11.215 5.000,10.932 L2.432,1.301 L0.629,1.301 C0.283,1.301 -0.000,1.008 -0.000,0.650 C-0.000,0.291 0.283,-0.002 0.629,-0.002 L2.903,-0.002 C3.186,-0.002 3.438,0.193 3.511,0.476 L6.079,10.107 L13.081,10.107 L15.408,4.562 L7.652,4.562 C7.306,4.562 7.023,4.269 7.023,3.910 C7.023,3.552 7.306,3.259 7.652,3.259 L16.373,3.259 C16.582,3.259 16.781,3.366 16.897,3.552 C17.012,3.737 17.033,3.964 16.949,4.171 ZM5.010,13.040 C5.796,13.040 6.436,13.704 6.436,14.519 C6.436,15.334 5.796,15.998 5.010,15.998 C4.224,15.998 3.585,15.334 3.585,14.519 C3.585,13.704 4.224,13.040 5.010,13.040 ZM13.825,13.040 C14.612,12.987 15.293,13.606 15.345,14.410 C15.366,14.813 15.251,15.192 15.000,15.486 C14.748,15.791 14.402,15.965 14.025,15.998 C13.993,15.998 13.951,15.998 13.920,15.998 C13.176,15.998 12.557,15.389 12.505,14.617 C12.452,13.813 13.039,13.095 13.825,13.040 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M14.766,14.570 L11.069,10.609 C12.020,9.445 12.540,7.981 12.540,6.456 C12.540,2.894 9.727,-0.002 6.269,-0.002 C2.812,-0.002 -0.002,2.894 -0.002,6.456 C-0.002,10.018 2.812,12.916 6.269,12.916 C7.567,12.916 8.804,12.512 9.862,11.747 L13.587,15.738 C13.742,15.905 13.952,15.997 14.176,15.997 C14.389,15.997 14.590,15.914 14.743,15.761 C15.068,15.439 15.078,14.904 14.766,14.570 ZM6.269,1.682 C8.825,1.682 10.904,3.823 10.904,6.456 C10.904,9.090 8.825,11.231 6.269,11.231 C3.714,11.231 1.634,9.090 1.634,6.456 C1.634,3.823 3.714,1.682 6.269,1.682 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="19px" height="17px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M17.224,2.226 C16.374,1.364 15.199,0.933 13.698,0.933 C13.283,0.933 12.860,1.009 12.428,1.156 C11.996,1.307 11.594,1.509 11.223,1.762 C10.851,2.016 10.531,2.254 10.263,2.476 C9.995,2.698 9.741,2.935 9.500,3.184 C9.259,2.935 9.004,2.698 8.737,2.476 C8.469,2.254 8.149,2.016 7.777,1.762 C7.406,1.509 7.004,1.307 6.572,1.156 C6.140,1.009 5.716,0.933 5.301,0.933 C3.801,0.933 2.626,1.364 1.776,2.226 C0.925,3.087 0.500,4.281 0.500,5.810 C0.500,6.275 0.579,6.754 0.736,7.247 C0.893,7.740 1.073,8.161 1.273,8.507 C1.474,8.855 1.702,9.193 1.956,9.524 C2.211,9.853 2.397,10.080 2.514,10.206 C2.631,10.330 2.723,10.421 2.790,10.477 L9.058,16.749 C9.178,16.873 9.326,16.935 9.500,16.935 C9.674,16.935 9.821,16.873 9.942,16.749 L16.200,10.497 C17.733,8.906 18.500,7.344 18.500,5.809 C18.500,4.281 18.075,3.087 17.224,2.226 ZM15.326,9.519 L9.500,15.342 L3.664,9.508 C2.412,8.209 1.786,6.976 1.786,5.809 C1.786,5.248 1.858,4.751 2.002,4.320 C2.146,3.890 2.330,3.548 2.554,3.292 C2.779,3.039 3.051,2.833 3.373,2.673 C3.694,2.514 4.009,2.406 4.317,2.350 C4.625,2.295 4.953,2.268 5.301,2.268 C5.650,2.268 6.025,2.355 6.426,2.533 C6.828,2.710 7.198,2.933 7.536,3.200 C7.874,3.467 8.164,3.717 8.405,3.950 C8.646,4.182 8.847,4.396 9.008,4.591 C9.128,4.744 9.292,4.819 9.500,4.819 C9.708,4.819 9.872,4.744 9.992,4.591 C10.153,4.396 10.354,4.182 10.595,3.950 C10.836,3.717 11.126,3.468 11.464,3.200 C11.802,2.933 12.172,2.710 12.574,2.533 C12.975,2.355 13.351,2.268 13.699,2.268 C14.047,2.268 14.375,2.295 14.683,2.350 C14.991,2.406 15.306,2.514 15.627,2.673 C15.949,2.833 16.222,3.039 16.446,3.292 C16.670,3.548 16.854,3.890 16.998,4.320 C17.142,4.751 17.214,5.248 17.214,5.809 C17.214,6.976 16.585,8.212 15.326,9.519 Z"></path>
-															</svg>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>Occasional Chair</h3>
-											<h6>Simply dummy text of the printing</h6>
-											<p><span>$80 </span>$50</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="product-grid">
-										<div class="product-item">
-											<img src="../../static/picture/p3.png" alt="product-img">
-											<div class="product-ovr-links">
-												<ul>
-													<li>
-														<a href="product-single.html">
-															<svg xmlns="http://www.w3.org/2000/svg" width="17px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.949,4.171 L14.077,11.019 C13.972,11.258 13.752,11.410 13.501,11.410 L5.608,11.410 C5.325,11.410 5.073,11.215 5.000,10.932 L2.432,1.301 L0.629,1.301 C0.283,1.301 -0.000,1.008 -0.000,0.650 C-0.000,0.291 0.283,-0.002 0.629,-0.002 L2.903,-0.002 C3.186,-0.002 3.438,0.193 3.511,0.476 L6.079,10.107 L13.081,10.107 L15.408,4.562 L7.652,4.562 C7.306,4.562 7.023,4.269 7.023,3.910 C7.023,3.552 7.306,3.259 7.652,3.259 L16.373,3.259 C16.582,3.259 16.781,3.366 16.897,3.552 C17.012,3.737 17.033,3.964 16.949,4.171 ZM5.010,13.040 C5.796,13.040 6.436,13.704 6.436,14.519 C6.436,15.334 5.796,15.998 5.010,15.998 C4.224,15.998 3.585,15.334 3.585,14.519 C3.585,13.704 4.224,13.040 5.010,13.040 ZM13.825,13.040 C14.612,12.987 15.293,13.606 15.345,14.410 C15.366,14.813 15.251,15.192 15.000,15.486 C14.748,15.791 14.402,15.965 14.025,15.998 C13.993,15.998 13.951,15.998 13.920,15.998 C13.176,15.998 12.557,15.389 12.505,14.617 C12.452,13.813 13.039,13.095 13.825,13.040 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M14.766,14.570 L11.069,10.609 C12.020,9.445 12.540,7.981 12.540,6.456 C12.540,2.894 9.727,-0.002 6.269,-0.002 C2.812,-0.002 -0.002,2.894 -0.002,6.456 C-0.002,10.018 2.812,12.916 6.269,12.916 C7.567,12.916 8.804,12.512 9.862,11.747 L13.587,15.738 C13.742,15.905 13.952,15.997 14.176,15.997 C14.389,15.997 14.590,15.914 14.743,15.761 C15.068,15.439 15.078,14.904 14.766,14.570 ZM6.269,1.682 C8.825,1.682 10.904,3.823 10.904,6.456 C10.904,9.090 8.825,11.231 6.269,11.231 C3.714,11.231 1.634,9.090 1.634,6.456 C1.634,3.823 3.714,1.682 6.269,1.682 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="19px" height="17px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M17.224,2.226 C16.374,1.364 15.199,0.933 13.698,0.933 C13.283,0.933 12.860,1.009 12.428,1.156 C11.996,1.307 11.594,1.509 11.223,1.762 C10.851,2.016 10.531,2.254 10.263,2.476 C9.995,2.698 9.741,2.935 9.500,3.184 C9.259,2.935 9.004,2.698 8.737,2.476 C8.469,2.254 8.149,2.016 7.777,1.762 C7.406,1.509 7.004,1.307 6.572,1.156 C6.140,1.009 5.716,0.933 5.301,0.933 C3.801,0.933 2.626,1.364 1.776,2.226 C0.925,3.087 0.500,4.281 0.500,5.810 C0.500,6.275 0.579,6.754 0.736,7.247 C0.893,7.740 1.073,8.161 1.273,8.507 C1.474,8.855 1.702,9.193 1.956,9.524 C2.211,9.853 2.397,10.080 2.514,10.206 C2.631,10.330 2.723,10.421 2.790,10.477 L9.058,16.749 C9.178,16.873 9.326,16.935 9.500,16.935 C9.674,16.935 9.821,16.873 9.942,16.749 L16.200,10.497 C17.733,8.906 18.500,7.344 18.500,5.809 C18.500,4.281 18.075,3.087 17.224,2.226 ZM15.326,9.519 L9.500,15.342 L3.664,9.508 C2.412,8.209 1.786,6.976 1.786,5.809 C1.786,5.248 1.858,4.751 2.002,4.320 C2.146,3.890 2.330,3.548 2.554,3.292 C2.779,3.039 3.051,2.833 3.373,2.673 C3.694,2.514 4.009,2.406 4.317,2.350 C4.625,2.295 4.953,2.268 5.301,2.268 C5.650,2.268 6.025,2.355 6.426,2.533 C6.828,2.710 7.198,2.933 7.536,3.200 C7.874,3.467 8.164,3.717 8.405,3.950 C8.646,4.182 8.847,4.396 9.008,4.591 C9.128,4.744 9.292,4.819 9.500,4.819 C9.708,4.819 9.872,4.744 9.992,4.591 C10.153,4.396 10.354,4.182 10.595,3.950 C10.836,3.717 11.126,3.468 11.464,3.200 C11.802,2.933 12.172,2.710 12.574,2.533 C12.975,2.355 13.351,2.268 13.699,2.268 C14.047,2.268 14.375,2.295 14.683,2.350 C14.991,2.406 15.306,2.514 15.627,2.673 C15.949,2.833 16.222,3.039 16.446,3.292 C16.670,3.548 16.854,3.890 16.998,4.320 C17.142,4.751 17.214,5.248 17.214,5.809 C17.214,6.976 16.585,8.212 15.326,9.519 Z"></path>
-															</svg>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>Ceiling Light</h3>
-											<h6>Simply dummy text of the printing</h6>
-											<p><span>$90 </span>$55</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="product-grid">
-										<div class="product-item">
-											<img src="../../static/picture/p4.png" alt="product-img">
-											<div class="product-ovr-links">
-												<ul>
-													<li>
-														<a href="product-single.html">
-															<svg xmlns="http://www.w3.org/2000/svg" width="17px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M16.949,4.171 L14.077,11.019 C13.972,11.258 13.752,11.410 13.501,11.410 L5.608,11.410 C5.325,11.410 5.073,11.215 5.000,10.932 L2.432,1.301 L0.629,1.301 C0.283,1.301 -0.000,1.008 -0.000,0.650 C-0.000,0.291 0.283,-0.002 0.629,-0.002 L2.903,-0.002 C3.186,-0.002 3.438,0.193 3.511,0.476 L6.079,10.107 L13.081,10.107 L15.408,4.562 L7.652,4.562 C7.306,4.562 7.023,4.269 7.023,3.910 C7.023,3.552 7.306,3.259 7.652,3.259 L16.373,3.259 C16.582,3.259 16.781,3.366 16.897,3.552 C17.012,3.737 17.033,3.964 16.949,4.171 ZM5.010,13.040 C5.796,13.040 6.436,13.704 6.436,14.519 C6.436,15.334 5.796,15.998 5.010,15.998 C4.224,15.998 3.585,15.334 3.585,14.519 C3.585,13.704 4.224,13.040 5.010,13.040 ZM13.825,13.040 C14.612,12.987 15.293,13.606 15.345,14.410 C15.366,14.813 15.251,15.192 15.000,15.486 C14.748,15.791 14.402,15.965 14.025,15.998 C13.993,15.998 13.951,15.998 13.920,15.998 C13.176,15.998 12.557,15.389 12.505,14.617 C12.452,13.813 13.039,13.095 13.825,13.040 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="16px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M14.766,14.570 L11.069,10.609 C12.020,9.445 12.540,7.981 12.540,6.456 C12.540,2.894 9.727,-0.002 6.269,-0.002 C2.812,-0.002 -0.002,2.894 -0.002,6.456 C-0.002,10.018 2.812,12.916 6.269,12.916 C7.567,12.916 8.804,12.512 9.862,11.747 L13.587,15.738 C13.742,15.905 13.952,15.997 14.176,15.997 C14.389,15.997 14.590,15.914 14.743,15.761 C15.068,15.439 15.078,14.904 14.766,14.570 ZM6.269,1.682 C8.825,1.682 10.904,3.823 10.904,6.456 C10.904,9.090 8.825,11.231 6.269,11.231 C3.714,11.231 1.634,9.090 1.634,6.456 C1.634,3.823 3.714,1.682 6.269,1.682 Z"></path>
-															</svg>
-														</a>
-													</li>
-													<li>
-														<a href="javascript:;">
-															<svg xmlns="http://www.w3.org/2000/svg" width="19px" height="17px">
-															<path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M17.224,2.226 C16.374,1.364 15.199,0.933 13.698,0.933 C13.283,0.933 12.860,1.009 12.428,1.156 C11.996,1.307 11.594,1.509 11.223,1.762 C10.851,2.016 10.531,2.254 10.263,2.476 C9.995,2.698 9.741,2.935 9.500,3.184 C9.259,2.935 9.004,2.698 8.737,2.476 C8.469,2.254 8.149,2.016 7.777,1.762 C7.406,1.509 7.004,1.307 6.572,1.156 C6.140,1.009 5.716,0.933 5.301,0.933 C3.801,0.933 2.626,1.364 1.776,2.226 C0.925,3.087 0.500,4.281 0.500,5.810 C0.500,6.275 0.579,6.754 0.736,7.247 C0.893,7.740 1.073,8.161 1.273,8.507 C1.474,8.855 1.702,9.193 1.956,9.524 C2.211,9.853 2.397,10.080 2.514,10.206 C2.631,10.330 2.723,10.421 2.790,10.477 L9.058,16.749 C9.178,16.873 9.326,16.935 9.500,16.935 C9.674,16.935 9.821,16.873 9.942,16.749 L16.200,10.497 C17.733,8.906 18.500,7.344 18.500,5.809 C18.500,4.281 18.075,3.087 17.224,2.226 ZM15.326,9.519 L9.500,15.342 L3.664,9.508 C2.412,8.209 1.786,6.976 1.786,5.809 C1.786,5.248 1.858,4.751 2.002,4.320 C2.146,3.890 2.330,3.548 2.554,3.292 C2.779,3.039 3.051,2.833 3.373,2.673 C3.694,2.514 4.009,2.406 4.317,2.350 C4.625,2.295 4.953,2.268 5.301,2.268 C5.650,2.268 6.025,2.355 6.426,2.533 C6.828,2.710 7.198,2.933 7.536,3.200 C7.874,3.467 8.164,3.717 8.405,3.950 C8.646,4.182 8.847,4.396 9.008,4.591 C9.128,4.744 9.292,4.819 9.500,4.819 C9.708,4.819 9.872,4.744 9.992,4.591 C10.153,4.396 10.354,4.182 10.595,3.950 C10.836,3.717 11.126,3.468 11.464,3.200 C11.802,2.933 12.172,2.710 12.574,2.533 C12.975,2.355 13.351,2.268 13.699,2.268 C14.047,2.268 14.375,2.295 14.683,2.350 C14.991,2.406 15.306,2.514 15.627,2.673 C15.949,2.833 16.222,3.039 16.446,3.292 C16.670,3.548 16.854,3.890 16.998,4.320 C17.142,4.751 17.214,5.248 17.214,5.809 C17.214,6.976 16.585,8.212 15.326,9.519 Z"></path>
-															</svg>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="product-text-rs">
-											<a href="javascript:;">
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											<i class="fa fa-star" aria-hidden="true"></i>
-											</a>
-											<h3>Ceiling Light</h3>
-											<h6>Simply dummy text of the printing</h6>
-											<p><span>$110 </span>$90</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-
-						</div>
-					</div>
+            </div>
+            <h1>最热门电影</h1>
+            <div class="">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="main-product-grid">
+                        <ul class="container1">
+                            {% for movie in topmovies_wr_hot %}
+                            <li>
+                                <div class="product-grid">
+                                    <div class="product-item">
+                                        <a href="{{url_for('recommend.single')}}"><img
+                                                alt="product-img"
+                                                src="{{url_for('static',filename='picture/posters/' ~ movie.movieId ~ '.jpg')}}"></a>
+                                    </div>
+                                    <div class="product-text-rs">
+                                        <a href="javascript:;">
+                                            {% for i in range(5) %}
+                                            {% if movie.vote_average > i %}
+                                            {% if movie.vote_average > i + 0.5 %}
+                                            <i class="fa fa-star"></i>
+                                            {% else %}
+                                            <i class="fa fa-star-half-o"></i>
+                                            {% endif %}
+                                            {% else %}
+                                            <i class="fa fa-star-o"></i>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </a>
+                                        <h3>{{movie.title}}</h3>
+                                        {# 将评分保留一位小数 #}
+                                        {% set vote_average = movie.vote_average|round(1, 'floor') %}
+                                        <h6>评分：{{vote_average}} - 人数：{{movie.vote_count}}</h6>
+                                        <p><span></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
+            </div>
 
 				<h1>最新电影</h1>
                 <div class="">
@@ -1276,161 +789,165 @@
     </div>
 
 
-    <!-- Slide Setting Box -->
-   <div class="slide-setting-box">
-        <div class="slide-setting-holder">
-            <div class="setting-box-head">
-                <h4>General Settings</h4>
-                <a href="javascript:void(0);" class="close-btn">Close</a>
+<!-- Slide Setting Box -->
+<div class="slide-setting-box">
+    <div class="slide-setting-holder">
+        <div class="setting-box-head">
+            <h4>General Settings</h4>
+            <a class="close-btn" href="javascript:void(0);">Close</a>
+        </div>
+        <div class="setting-box-body">
+            <div class="p-4">
+                <div class="switch-settings">
+                    <div class="d-flex mb-3">
+                        <span class="mr-auto fs-15">Notifications</span>
+                        <div class="checkbox checkbox-toggle">
+                            <input id="checkbox55" type="checkbox">
+                            <label for="checkbox55"></label>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <span class="mr-auto fs-15">Show your emails</span>
+                        <div class="checkbox checkbox-toggle">
+                            <input id="checkbox56" type="checkbox">
+                            <label for="checkbox56"></label>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <span class="mr-auto fs-15">Show Task statistics</span>
+                        <div class="checkbox checkbox-toggle">
+                            <input id="checkbox57" type="checkbox">
+                            <label for="checkbox57"></label>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <span class="mr-auto fs-15">Show recent activity</span>
+                        <div class="checkbox checkbox-toggle">
+                            <input id="checkbox58" type="checkbox">
+                            <label for="checkbox58"></label>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <span class="mr-auto fs-15">System Logs</span>
+                        <div class="checkbox checkbox-toggle">
+                            <input id="checkbox59" type="checkbox">
+                            <label for="checkbox59"></label>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <span class="mr-auto fs-15">Error Reporting</span>
+                        <div class="checkbox checkbox-toggle">
+                            <input id="checkbox60" type="checkbox">
+                            <label for="checkbox60"></label>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <span class="mr-auto fs-15">Show your status to all</span>
+                        <div class="checkbox checkbox-toggle">
+                            <input id="checkbox61" type="checkbox">
+                            <label for="checkbox61"></label>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <span class="mr-auto fs-15">Keep up to date</span>
+                        <div class="checkbox checkbox-toggle">
+                            <input id="checkbox62" type="checkbox">
+                            <label for="checkbox62"></label>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="setting-box-body">
-				<div class="p-4"> 
-					<div class="switch-settings">
-						<div class="d-flex mb-3">
-							<span class="mr-auto fs-15">Notifications</span>
-							<div class="checkbox checkbox-toggle">
-								<input id="checkbox55" type="checkbox">
-								<label for="checkbox55"></label>
-							</div>
-						</div>
-						<div class="d-flex mb-3">
-							<span class="mr-auto fs-15">Show your emails</span>
-							<div class="checkbox checkbox-toggle">
-								<input id="checkbox56" type="checkbox">
-								<label for="checkbox56"></label>
-							</div> 
-						</div>
-						<div class="d-flex mb-3">
-							<span class="mr-auto fs-15">Show Task statistics</span>
-							<div class="checkbox checkbox-toggle">
-								<input id="checkbox57" type="checkbox">
-								<label for="checkbox57"></label>
-							</div> 
-						</div>
-						<div class="d-flex mb-3">
-							<span class="mr-auto fs-15">Show recent activity</span>
-							<div class="checkbox checkbox-toggle">
-								<input id="checkbox58" type="checkbox">
-								<label for="checkbox58"></label>
-							</div>
-						</div>
-						<div class="d-flex mb-3">
-							<span class="mr-auto fs-15">System Logs</span>
-							<div class="checkbox checkbox-toggle">
-								<input id="checkbox59" type="checkbox">
-								<label for="checkbox59"></label>
-							</div> 
-						</div>
-						<div class="d-flex mb-3">
-							<span class="mr-auto fs-15">Error Reporting</span>
-							<div class="checkbox checkbox-toggle">
-								<input id="checkbox60" type="checkbox">
-								<label for="checkbox60"></label>
-							</div> 
-						</div>
-						<div class="d-flex mb-3">
-							<span class="mr-auto fs-15">Show your status to all</span>
-							<div class="checkbox checkbox-toggle">
-								<input id="checkbox61" type="checkbox">
-								<label for="checkbox61"></label>
-							</div> 
-						</div>
-						<div class="d-flex">
-							<span class="mr-auto fs-15">Keep up to date</span>
-							<div class="checkbox checkbox-toggle">
-								<input id="checkbox62" type="checkbox">
-								<label for="checkbox62"></label>
-							</div> 
-						</div>
-					</div> 
-				</div>
+        </div>
+        <div class="p-3 border-top border-bottom">
+            <h5 class="border-bottom-0 mb-0">Overview</h5>
+        </div>
+        <div class="p-4">
+            <div class="progress-wrapper">
+                <div class="mb-3">
+                    <p class="mb-2">Achieves<span class="float-right text-muted font-weight-normal">95%</span></p>
+                    <div class="progress h-1">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25"
+                             class="progress-bar bg-primary col-3" role="progressbar"></div>
+                    </div>
+                </div>
             </div>
-			<div class="p-3 border-top border-bottom">
-				<h5 class="border-bottom-0 mb-0">Overview</h5> 
-			</div>
-			<div class="p-4"> 
-				<div class="progress-wrapper">
-					<div class="mb-3"> 
-						<p class="mb-2">Achieves<span class="float-right text-muted font-weight-normal">95%</span></p>
-						<div class="progress h-1"> 
-							<div class="progress-bar bg-primary col-3" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-						</div> 
-					</div>
-				</div> 
-				<div class="progress-wrapper pt-2">
-					<div class="mb-3"> 
-						<p class="mb-2">Projects<span class="float-right text-muted font-weight-normal">65%</span></p>
-						<div class="progress">
-							<div class="progress-bar bg-secondary col-3" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-						</div> 
-					</div>
-				</div> 
-				<div class="progress-wrapper pt-2">
-					<div class="mb-3">
-						<p class="mb-2">Earnings<span class="float-right text-muted font-weight-normal">55%</span></p>
-						<div class="progress">
-							<div class="progress-bar bg-success col-8" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-					</div>
-				</div>
-				<div class="progress-wrapper pt-2"> 
-					<div class="mb-3"> 
-						<p class="mb-2">Balance<span class="float-right text-muted font-weight-normal">50%</span></p>
-						<div class="progress h-1"> 
-							<div class="progress-bar bg-warning w-50 " role="progressbar"></div>
-						</div>
-					</div>
-				</div>
-				<div class="progress-wrapper pt-2">
-					<div class="mb-3"> 
-						<p class="mb-2">Total Profits<span class="float-right text-muted font-weight-normal">80%</span></p>
-						<div class="progress">
-							<div class="progress-bar bg-info col-6" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-					</div>
-				</div>
-				<div class="progress-wrapper pt-2">
-					<div class="mb-3"> 
-						<p class="mb-2">Total Likes<span class="float-right text-muted font-weight-normal">75%</span></p>
-						<div class="progress h-1">
-							<div class="progress-bar bg-teal w-75" role="progressbar"></div> 
-						</div>
-					</div>
-				</div>
-			</div>
+            <div class="progress-wrapper pt-2">
+                <div class="mb-3">
+                    <p class="mb-2">Projects<span class="float-right text-muted font-weight-normal">65%</span></p>
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25"
+                             class="progress-bar bg-secondary col-3" role="progressbar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-wrapper pt-2">
+                <div class="mb-3">
+                    <p class="mb-2">Earnings<span class="float-right text-muted font-weight-normal">55%</span></p>
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25"
+                             class="progress-bar bg-success col-8" role="progressbar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-wrapper pt-2">
+                <div class="mb-3">
+                    <p class="mb-2">Balance<span class="float-right text-muted font-weight-normal">50%</span></p>
+                    <div class="progress h-1">
+                        <div class="progress-bar bg-warning w-50 " role="progressbar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-wrapper pt-2">
+                <div class="mb-3">
+                    <p class="mb-2">Total Profits<span class="float-right text-muted font-weight-normal">80%</span></p>
+                    <div class="progress">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-info col-6"
+                             role="progressbar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-wrapper pt-2">
+                <div class="mb-3">
+                    <p class="mb-2">Total Likes<span class="float-right text-muted font-weight-normal">75%</span></p>
+                    <div class="progress h-1">
+                        <div class="progress-bar bg-teal w-75" role="progressbar"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-    <!-- Color Setting -->
-	<div id="style-switcher">
-		<div>
-			<ul class="colors">
-				<li>
-					<p class='colorchange' id='style'>
-					</p>
-				</li>
-			</ul>
-		</div>
-		<div class="bottom">
-			<a href="" class="settings">
-				<i class="fa fa-cog" aria-hidden="true"></i>
-			</a>
-		</div>
-	</div>
-    <!-- Color Setting -->
-	
-	
-    <!-- Script Start -->
-	<script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
-    <script src="{{url_for('static',filename='js/popper.min.js')}}"></script>
-    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
-	<script src="{{url_for('static',filename='js/swiper.min.js')}}"></script>
-    <script src="{{url_for('static',filename='js/apexcharts.min.js')}}"></script>
-    <script src="{{url_for('static',filename='js/control-chart-apexcharts.js')}}"></script>
-	<!-- Page Specific -->
-    <script src="{{url_for('static',filename='js/nice-select.min.js')}}"></script>
-    <!-- Custom Script -->
-    <script src="{{url_for('static',filename='js/custom.js')}}"></script>
+<!-- Color Setting -->
+<div id="style-switcher">
+    <div>
+        <ul class="colors">
+            <li>
+                <p class='colorchange' id='style'>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div class="bottom">
+        <a class="settings" href="">
+            <i aria-hidden="true" class="fa fa-cog"></i>
+        </a>
+    </div>
+</div>
+<!-- Color Setting -->
+
+
+<!-- Script Start -->
+<script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/popper.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/swiper.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/apexcharts.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/control-chart-apexcharts.js')}}"></script>
+<!-- Page Specific -->
+<script src="{{url_for('static',filename='js/nice-select.min.js')}}"></script>
+<!-- Custom Script -->
+<script src="{{url_for('static',filename='js/custom.js')}}"></script>
 </body>
 
 </html>

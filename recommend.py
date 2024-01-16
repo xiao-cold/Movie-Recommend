@@ -16,24 +16,16 @@ def recommend():
 def index():
     # 查询数据库
     topmovies = Top_Movies.query.all()
-    # 筛选year最近的10部top部电影
-    topmovies_least = sorted(topmovies, key=lambda x: x.year, reverse=True)[:10]
-    # 筛选wr值最高的10部top电影
-    topmovies_wr = sorted(topmovies, key=lambda x: x.wr, reverse=True)[:10]
+    # 筛选year最近的4部top部电影
+    topmovies_least = sorted(topmovies, key=lambda x: x.year, reverse=True)[:4]
+    # 筛选wr值最高的16+12部top电影
+    topmovies_wr = sorted(topmovies, key=lambda x: x.wr, reverse=True)[:28]
+    # 将其中16部电影分配给轮播图，12部电影分配给热门电影
+    topmovies_wr_carousel = topmovies_wr[:16]
+    topmovies_wr_hot = topmovies_wr[16:]
 
-    # 查询年份最近的10部电影的tmdbId，用来匹配海报文件名
-    topmovies_least_tmdbId = []
-    for topmovie in topmovies_least:
-        topmovies_least_tmdbId.append(Movie.query.filter_by(movieId=topmovie.movieId).first().tmdbId)
-
-    # 在查询wr值最高的10部电影的tmdbId，用来匹配海报文件名
-    topmovies_wr_tmdbId = []
-    for topmovie in topmovies_wr:
-        topmovies_wr_tmdbId.append(Movie.query.filter_by(movieId=topmovie.movieId).first().tmdbId)
-
-    return render_template('recommend/index.html', topmovies_least_tmdbId=topmovies_least_tmdbId,
-                           topmovies_wr_tmdbId=topmovies_wr_tmdbId, topmovies_least=topmovies_least,
-                           topmovies_wr=topmovies_wr)
+    return render_template('recommend/index.html', topmovies_least=topmovies_least,
+                           topmovies_wr_carousel=topmovies_wr_carousel, topmovies_wr_hot=topmovies_wr_hot)
 
 
 @bp.route('/for-you')
@@ -70,7 +62,5 @@ def all_film():
     return render_template('recommend/all-film.html') \
  \
         @ bp.route('/single')
-
-
 def single():
     return render_template('recommend/single.html')
