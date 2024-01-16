@@ -15,21 +15,33 @@ MODLE_PATH = './algorithm/model/svd_model_1p5M.joblib'
 
 
 class RecModel:
-    def __init__(self):
+    def __init__(self, retrain=False):
+        self.retrain = retrain
         self.data = None
         self.trainset = None
         self.testset = None
         self.model = None
         self.movie_dict = None
-        wd = os.getcwd()
-        print(wd)
-        if os.path.exists(MODLE_PATH):
+        # wd = os.getcwd()
+        # print(wd)
+        # 若不用重新训练模型，则直接加载模型
+        if not self.retrain and os.path.exists(MODLE_PATH):
             self.preprocess()
             self.model = load(MODLE_PATH)[1]
+        # 若不用重新训练模型，但是模型不存在，则先进行数据预处理，再训练模型
+        elif not self.retrain and not os.path.exists(MODLE_PATH):
+            self.preprocess(full_process=True)
+            self.train()
+            self.evaluate()
+        # 若需要重新训练模型，则先进行数据预处理，再训练模型
         else:
             self.preprocess(full_process=True)
             self.train()
             self.evaluate()
+
+    # 将新增的用户评价数据添加到原有的评价数据集中
+    def add_ratings(self, new_ratings_df):
+        self.data = pd.merge(self.data, new_ratings_df, on=['userId', 'movieId'], how='outer').fillna(0)
 
     def preprocess(self, full_process=False):
         """数据预处理"""
