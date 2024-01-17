@@ -456,7 +456,8 @@ body .card-header,
     padding: 26px 30px !important;
     background: var(--white);
     border-bottom: 1px solid var(--border-color);
-	text-transform: capitalize;
+    text-transform: capitalize;
+    display: inline;
 }
 
 body .card-footer,

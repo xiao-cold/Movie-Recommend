@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>JavaScript Shield UI Demos</title>
+    <link id="themecss" rel="stylesheet" type="text/css"
+          href="//www.shieldui.com/shared/components/latest/css/light/all.min.css"/>
+    <script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+</head>
+<body class="theme-light">
+<div id="grid"></div>
+<script type="text/javascript">
+    $(function () {
+        $("#grid").shieldGrid({
+            dataSource: {
+                events: {
+                    error: function (event) {
+                        if (event.errorType == "transport") {
+                            // transport error is an ajax error; event holds the xhr object
+                            alert("transport error: " + event.error.statusText);
+                            // reload the data source if the operation that failed was save
+                            if (event.operation == "save") {
+                                this.read();
+                            }
+                        } else {
+                            // other data source error - validation, etc
+                            alert(event.errorType + " error: " + event.error);
+                        }
+                    }
+                },
+                remote: {
+                    read: {
+                        type: "GET",
+                        url: "/manage",
+                        dataType: "json"
+                    },
+                    modify: {
+                        create: function (items, success, error) {
+                            var newItem = items[0];
+                            $.ajax({
+                                type: "POST",
+                                url: "/manage",
+                                dataType: "json",
+                                data: newItem.data,
+                                complete: function (xhr) {
+                                    if (xhr.readyState == 4) {
+                                        if (xhr.status == 201) {
+                                            // update the id of the newly-created item with the
+                                            // one returned from the server in the Location hader url
+                                            var location = xhr.getResponseHeader("Location");
+                                            newItem.data.Id = +location.replace(/^.*?\/([\d]+)$/, "$1");
+                                            success();
+                                            return;
+                                        }
+                                    }
+                                    error(xhr);
+                                }
+                            });
+                        },
+                        update: function (items, success, error) {
+                            $.ajax({
+                                type: "PUT",
+                                url: "/manage/" + items[0].data.Id,
+                                dataType: "json",
+                                contentType: "application/json",
+                                data: JSON.stringify(items[0].data)
+                            }).then(success, error);
+                        },
+                        remove: function (items, success, error) {
+                            $.ajax({
+                                type: "DELETE",
+                                url: "/manage/" + items[0].data.Id
+                            }).then(success, error);
+                        }
+                    }
+                },
+                schema: {
+                    fields: {
+                        Id: {path: "movieId", type: Number},
+                        Title: {path: "title", type: String},
+                        Author: {path: "Author", type: String},
+                        Description: {path: "Description", type: String},
+                        Price: {path: "Price", type: Number}
+                    }
+                }
+            },
+            sorting: true,
+            rowHover: false,
+            columns: [
+                {field: "Title", title: "Book Title", width: 120},
+                {field: "Author", title: "Author", width: 120},
+                {field: "Description", title: "Description", width: 200},
+                {field: "Price", title: "Price", format: "{0:c}", width: 80},
+                {
+                    width: 140,
+                    title: " ",
+                    buttons: [
+                        {commandName: "edit", caption: "Edit"},
+                        {commandName: "delete", caption: "Delete"}
+                    ]
+                }
+            ],
+            toolbar: [
+                {
+                    buttons: [
+                        {commandName: "insert", caption: "Add Book"}
+                    ],
+                    position: "top"
+                },
+                {
+                    buttons: [
+                        {
+                            caption: "Reset Book List",
+                            click: function (e) {
+                                var grid = this;
+                                $.ajax({
+                                    type: "PUT",
+                                    url: "/manage"
+                                }).done(function () {
+                                    grid.dataSource.read();
+                                });
+                            }
+                        }
+                    ],
+                    position: "bottom"
+                }
+            ],
+            paging: {
+                pageSize: 5
+            },
+            editing: {
+                enabled: true,
+                type: "row"
+            }
+        });
+    });
+</script>
+</body>
+</html>

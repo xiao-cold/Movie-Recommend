@@ -106,10 +106,16 @@ def foryou():
     return render_template('recommend/for-you.html', recommend_movies=recommend_movies, genres_list=genres)
 
 
-@bp.route('/hot-film')
-def hot_film():
-    return render_template('recommend/hot-film.html')
-
+@bp.route('/for-you/<string:genre>')
+def foryou_movie(genre):
+    # 根据类型推荐
+    print(genre)
+    recommend_movies = []
+    movies = Movie.query.filter(Movie.genres.like('%' + genre + '%')).order_by(Movie.vote_average.desc()).all()[:10]
+    recommend_movies.extend(movies)
+    genres = ['Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy',
+              'Film-Noir', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']
+    return render_template('recommend/for-you.html', recommend_movies=recommend_movies, genres_list=genres)
 
 @bp.route('/track')
 def track():
