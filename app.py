@@ -7,8 +7,8 @@ from database import db
 HOSTNAME = "127.0.0.1"
 PORT = 3306
 USERNAME = "root"
-PASSWORD = "530712"
-DATABASE = "db_movies"
+PASSWORD = "Zz16235978000"
+DATABASE = "movie_system"
 
 
 # create and configure the app
