@@ -16,24 +16,19 @@ def recommend():
 def index():
     # 查询数据库
     topmovies = Top_Movies.query.all()
-    # 筛选year最近的10部top部电影
-    topmovies_least = sorted(topmovies, key=lambda x: x.year, reverse=True)[:10]
-    # 筛选wr值最高的10部top电影
-    topmovies_wr = sorted(topmovies, key=lambda x: x.wr, reverse=True)[:10]
+    # 筛选year最近的4部top部电影
+    topmovies_least = sorted(topmovies, key=lambda x: x.year, reverse=True)[:4]
+    # 筛选wr值最高的16+12部top电影
+    topmovies_wr = sorted(topmovies, key=lambda x: x.wr, reverse=True)[:28]
+    # 将其中16部电影分配给轮播图，12部电影分配给热门电影
+    topmovies_wr_carousel = topmovies_wr[:16]
+    topmovies_wr_hot = topmovies_wr[16:]
 
-    # 查询年份最近的10部电影的tmdbId，用来匹配海报文件名
-    topmovies_least_tmdbId = []
-    for topmovie in topmovies_least:
-        topmovies_least_tmdbId.append(Movie.query.filter_by(movieId=topmovie.movieId).first().tmdbId)
+    rec = current_app.model.get_top_n_recommendations(1001, 10)
+    print(rec)
 
-    # 在查询wr值最高的10部电影的tmdbId，用来匹配海报文件名
-    topmovies_wr_tmdbId = []
-    for topmovie in topmovies_wr:
-        topmovies_wr_tmdbId.append(Movie.query.filter_by(movieId=topmovie.movieId).first().tmdbId)
-
-    return render_template('recommend/index.html', topmovies_least_tmdbId=topmovies_least_tmdbId,
-                           topmovies_wr_tmdbId=topmovies_wr_tmdbId, topmovies_least=topmovies_least,
-                           topmovies_wr=topmovies_wr)
+    return render_template('recommend/index.html', topmovies_least=topmovies_least,
+                           topmovies_wr_carousel=topmovies_wr_carousel, topmovies_wr_hot=topmovies_wr_hot)
 
 
 @bp.route('/for-you')
@@ -76,3 +71,12 @@ def single():
 @bp.route('/single/<string:movie_title>/<string:movie_genres>')
 def single1(movie_title,movie_genres=None,movie_rating=None,movie_director=None,movie_actors=None,movie_overview=None):
     return render_template('recommend/single.html',movie_title=movie_title,movie_genres=movie_genres,movie_rating=movie_rating,movie_director=movie_director,movie_actors=movie_actors,movie_overview=movie_overview)
+
+# 将数据库中的评分数据的时间戳全部修改为当前时间
+@bp.route('/update-timestamp')
+def update_timestamp():
+    ratings = Ratings.query.all()
+    for rating in ratings:
+        rating.timestamp = time.time()
+    db.session.commit()
+    return 'ok'
