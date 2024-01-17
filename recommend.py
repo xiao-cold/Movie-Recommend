@@ -8,7 +8,7 @@ from flask import (
 
 from algorithm.svd import RecModel
 from database import db
-from mydb import Movie, Top_Movies, Ratings, Tracks
+from mydb import Movie, Top_Movies, Ratings, Tracks, Users
 
 bp = Blueprint('recommend', __name__)
 
@@ -58,7 +58,7 @@ def get_new_user_ratings():
 @bp.route('/for-you')
 def foryou():
     # 为你推荐
-    user_id = 902
+    user_id = 1001
     recommend_movies = []
 
     # 检查用户是否有评分历史
@@ -100,7 +100,10 @@ def foryou():
             movie = Movie.query.get(movieId)
             recommend_movies[i] = movie
 
-    return render_template('recommend/for-you.html', recommend_movies=recommend_movies)
+        genres = ['Action', 'Adventure', 'Animation', 'Children', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy',
+                  'Film-Noir', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']
+
+    return render_template('recommend/for-you.html', recommend_movies=recommend_movies, genres_list=genres)
 
 
 @bp.route('/hot-film')
@@ -114,12 +117,14 @@ def track():
     # 根据用户id查询用户的浏览历史
     tracks = Tracks.query.filter_by(userId=user_id).order_by(Tracks.time.desc()).all()
 
-    return render_template('recommend/track.html')
+    movies = []
+    # 根据moviId查询电影信息
+    for i in range(len(tracks)):
+        movieId = tracks[i].movieId
+        print(i, movieId)
+        movies.append(Movie.query.get(movieId))
 
-
-@bp.route('/all-film')
-def all_film():
-    return render_template('recommend/all-film.html')
+    return render_template('recommend/track.html', tracks=movies)
 
 
 @bp.route('/single')
@@ -129,6 +134,13 @@ def single():
 
 @bp.route('/single/<int:movieId>')
 def single1(movieId):
+    # 记录用户浏览历史
+    # 生成唯一的trackId
+    trackId = uuid.uuid1()
+    track = Tracks(trackId=trackId, userId=1001, movieId=movieId, time=datetime.now())
+    db.session.add(track)
+    db.session.commit()
+
     movie = Movie.query.get(movieId)
     print(str(movie.movieId) + movie.title + str(movie.year) + str(movie.vote_average))
 
@@ -144,14 +156,18 @@ def single1(movieId):
         rec[i] = Movie.query.get(movieId)
         print(rec[i].title + str(rec[i].movieId))
 
-    # 记录用户浏览历史
-    # 生成唯一的trackId
-    trackId = uuid.uuid1()
-    track = Tracks(trackId=trackId, userId=1001, movieId=movieId, time=datetime.now())
-    db.session.add(track)
-    db.session.commit()
-
     return render_template('recommend/single.html', movie=movie, rec=rec)
+
+
+@bp.route('/manage')
+def manage():
+    # 查询数据库
+    movies = Movie.query.all()
+    users = Users.query.all()
+    ratings = Ratings.query.all()
+    tracks = Tracks.query.all()
+
+    return render_template('recommend/manage.html', movies=movies, users=users, ratings=ratings, tracks=tracks)
 
 
 # 将数据库中的评分数据的时间戳全部修改为当前时间

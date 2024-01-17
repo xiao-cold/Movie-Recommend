@@ -23,6 +23,21 @@ class Movie(db.Model):
     genres = db.Column(db.String(255))
     vote_average = db.Column(db.String(255))
 
+    def to_dict(self):
+        return {
+            'movieId': self.movieId,
+            'tmdbId': self.tmdbId,
+            'title': self.title,
+            'year': self.year,
+            'vote_count': self.vote_count,
+            'overview': self.overview,
+            'poster_path': self.poster_path,
+            'director': self.director,
+            'cast': self.cast.split('|'),
+            'genres': self.genres,
+            'vote_average': self.vote_average
+        }
+
 
 class Action(db.Model):
     __tablename__ = 'top250_Action'
