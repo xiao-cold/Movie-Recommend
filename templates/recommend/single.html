@@ -83,18 +83,9 @@
                                 <!--                                    <p>UI | UX Designer</p>-->
                             </div>
                             <ul>
+
                                 <li>
-                                    <a href="profile.html">
-                                        <i class="far fa-edit"></i> 编辑资料
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="setting.html">
-                                        <i class="fas fa-cog"></i> 设置
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="../auth/login.html">
+                                    <a href="{{url_for('auth.logout')}}">
                                         <i class="fas fa-sign-out-alt"></i> 退出
                                     </a>
                                 </li>
@@ -185,7 +176,7 @@
                         <h2 class="block">暂无数据</h2>
                         {% endif %}
                         {% if movie.vote_average %}
-                        <h2 class="block">{{movie.vote_average}}</h2>
+                        <h2 class="block"><a href="{{url_for}}">{{movie.vote_average}}</a></h2>
                         {% else %}
                         <h2 class="block">暂无数据</h2>
                         {% endif %}

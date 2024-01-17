@@ -8,6 +8,7 @@ from flask import (
 from sqlalchemy.sql.functions import current_user
 
 from algorithm.svd import RecModel
+from auth import login_required
 from database import db
 from mydb import Movie, Top_Movies, Ratings, Tracks, Users
 
@@ -54,6 +55,7 @@ def get_new_user_ratings():
 
 
 @bp.route('/for-you')
+@login_required
 def foryou():
     # 为你推荐
     user_id = g.user.userId
@@ -107,6 +109,7 @@ def foryou():
 
 
 @bp.route('/for-you/<string:genre>')
+@login_required
 def foryou_movie(genre):
     # 根据类型推荐
     print(genre)
@@ -170,6 +173,7 @@ def single1(movieId):
 
 
 @bp.route('/manage')
+@login_required
 def manage():
     print("manage")
     print(g.user.userId)
@@ -216,10 +220,46 @@ def manage_insert():
     return render_template('recommend/insert.html')
 
 
-@bp.route('/manage-update')
-def manage_update():
-    return render_template('recommend/update.html')
+@bp.route('/manage-update/<movieId>', methods=('GET', 'POST'))
+@login_required
+def manage_update(movieId):
+    if request.method == 'POST':
+        title = request.form['title']
+        director = request.form['director']
+        vote_average = request.form['vote_average']
+        vote_count = request.form['vote_count']
+        cast = request.form['cast']
+        genres = request.form['genres']
+        print(movieId)
 
+        if vote_average == '':
+            vote_average = None
+        if vote_count == '':
+            vote_count = None
+        # 数据库更新
+
+        movie = Movie.query.get(movieId)
+        movie.title = title
+        movie.director = director
+        movie.vote_average = vote_average
+        movie.vote_count = vote_count
+        movie.cast = cast
+        movie.genres = genres
+        db.session.commit()
+        flash('更新成功')
+        return redirect(url_for('recommend.manage'))
+
+    print(movieId)
+    return render_template('recommend/update.html', movieId=movieId)
+
+
+@bp.route('/manage-delete/<int:movieId>')
+@login_required
+def manage_delete(movieId):
+    # 数据库删除
+    Movie.query.filter_by(movieId=movieId).delete()
+    db.session.commit()
+    return redirect(url_for('recommend.manage'))
 
 
 # 将数据库中的评分数据的时间戳全部修改为当前时间

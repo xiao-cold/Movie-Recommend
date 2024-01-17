@@ -83,7 +83,7 @@ def login():
 def logout():
     # session.clear() 会将session中的user_id删除
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('auth.login'))
 
 
 def login_required(view):

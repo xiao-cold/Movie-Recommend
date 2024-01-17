@@ -88,18 +88,9 @@
                                 <!--                                    <p>UI | UX Designer</p>-->
                             </div>
                             <ul>
+
                                 <li>
-                                    <a href="profile.html">
-                                        <i class="far fa-edit"></i> 编辑资料
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="setting.html">
-                                        <i class="fas fa-cog"></i> 设置
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="../auth/login.html">
+                                    <a href="{{url_for('auth.logout')}}">
                                         <i class="fas fa-sign-out-alt"></i> 退出
                                     </a>
                                 </li>
@@ -115,7 +106,7 @@
         <div class="side-menu-wrap">
             <ul class="main-menu">
                 <li>
-                    <a class="active" href="javascript:void(0);">
+                    <a class="active" href="{{url_for('recommend.index')}}">
                             <span class="icon-menu feather-icon">
                                 <svg class="feather feather-home" fill="none" stroke="currentColor"
                                      stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -183,7 +174,7 @@
                                     <div class="product-item">
                                         <a href="{{url_for('recommend.single1' ,movieId = movie.movieId)}}"><img
                                                 alt="product-img"
-                                                src="https://image.tmdb.or g/t/p/w500{{movie.poster_path}}">
+                                                src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}">
                                         </a>
                                     </div>
                                     <div class="product-text-rs">
