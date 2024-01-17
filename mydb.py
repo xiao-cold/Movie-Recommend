@@ -38,6 +38,9 @@ class Movie(db.Model):
             'vote_average': self.vote_average
         }
 
+    def to_json(self):
+        return jsonify(self.to_dict())
+
 
 class Action(db.Model):
     __tablename__ = 'top250_Action'

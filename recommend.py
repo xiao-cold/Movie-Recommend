@@ -168,12 +168,22 @@ def single1(movieId):
 @bp.route('/manage')
 def manage():
     # 查询数据库
-    movies = Movie.query.all()
-    users = Users.query.all()
-    ratings = Ratings.query.all()
-    tracks = Tracks.query.all()
+    movies = Movie.query.limit(20).all()
+    users = Users.query.limit(20).all()
+    ratings = Ratings.query.limit(20).all()
+    tracks = Tracks.query.limit(20).all()
 
-    return render_template('recommend/manage.html', movies=movies, users=users, ratings=ratings, tracks=tracks)
+    return render_template('recommend/manage1.html', movies=movies, users=users, ratings=ratings, tracks=tracks)
+
+
+@bp.route('/manage-insert')
+def manage_insert():
+    return render_template('recommend/insert.html')
+
+
+@bp.route('/manage-update')
+def manage_update():
+    return render_template('recommend/update.html')
 
 
 # 将数据库中的评分数据的时间戳全部修改为当前时间
