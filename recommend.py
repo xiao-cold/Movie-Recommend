@@ -1,8 +1,13 @@
+import time
+from datetime import datetime
+
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
+    Blueprint, flash, g, redirect, render_template, request, session, url_for, current_app
 )
-from app import model
-from mydb import Movie, Top_Movies
+
+from algorithm.svd import RecModel
+from database import db
+from mydb import Movie, Top_Movies, Ratings
 
 bp = Blueprint('recommend', __name__)
 
@@ -24,28 +29,72 @@ def index():
     topmovies_wr_carousel = topmovies_wr[:16]
     topmovies_wr_hot = topmovies_wr[16:]
 
+    rec = current_app.model.get_top_n_recommendations(1001, 10)
+    print(rec)
+
     return render_template('recommend/index.html', topmovies_least=topmovies_least,
                            topmovies_wr_carousel=topmovies_wr_carousel, topmovies_wr_hot=topmovies_wr_hot)
+
+
+def get_new_user_ratings():
+    rec_model = current_app.model  # 使用 current_app.model
+    last_trained = rec_model.get_last_training_timestamp()
+
+    # 如果没有记录上次训练时间，则获取所有评分
+    if last_trained is None:
+        new_ratings = Ratings.query.all()
+    else:
+        # # 转换时间戳为 datetime 对象
+        # last_trained_date = datetime.fromtimestamp(last_trained)
+        # 查询自上次训练以来的新评分
+        new_ratings = Ratings.query.filter(Ratings.timestamp > last_trained).all()
+
+    # 转换为所需的格式: [(user_id, movie_id, rating), ...]
+    new_ratings_data = [(r.userId, r.movieId, r.rating) for r in new_ratings]
+    return new_ratings_data
 
 
 @bp.route('/for-you')
 def foryou():
     # 为你推荐
-    # uesr_id = 1001
+    user_id = 901
     recommend_movies = []
 
-    # 检查用户是否有评分历史，如果没有，就给他推荐热门电影
+    # 检查用户是否有评分历史
+    user_ratings = Ratings.query.filter_by(userId=user_id).order_by(Ratings.timestamp.desc()).all()
+    if not user_ratings:
+        print('here 1 用户没有评分历史')
+        recommend_movies = Top_Movies.query.order_by(Top_Movies.wr.desc()).all()[:10]
+    else:
+        print('here 2 用户有评分历史')
 
-    # 查询数据库中存储的用户评分
-    # ratings = Rating.query.filter_by(userId=uesr_id).all()
-    # 将用户评分转为dataframe格式
-    # ratings_df = pd.DataFrame([rating.to_dict() for rating in ratings])
-    # ratings_df = ratings_df[['userId', 'movieId', 'rating']]
+        # 检查是否需要重新训练模型
+        last_rating_time = user_ratings[0].timestamp
+        rec_model = current_app.model  # 使用 current_app.model
 
-    recommend_movies = str(model.get_top_n_recommendations(1034, n=10)[0])
-    print(str(recommend_movies))
-    return render_template('recommend/for-you.html')
+        model_last_trained = rec_model.get_last_training_timestamp()
+        # 如果没有记录上次训练时间，则获取所有评分
+        if model_last_trained is None:
+            print('here 3 没有记录上次训练时间')
+            model_last_trained = 0
 
+        if last_rating_time > model_last_trained:
+            # 获取新的用户评分数据
+            new_ratings = get_new_user_ratings()
+
+            # 重新训练模型
+            print('here 3 重新训练模型')
+            rec_model.retrain_model(new_ratings)
+
+            # 弹出等待提醒
+            flash('here 4 正在为您重新训练模型，请稍后再试')
+
+        # 生成个性化推荐
+        print('here 5 生成个性化推荐')
+        recommend_movies = rec_model.get_top_n_recommendations(user_id, 10)
+        # 你的个性化推荐逻辑 ...
+
+    return render_template('recommend/for-you.html', recommend_movies=recommend_movies)
 
 @bp.route('/hot-film')
 def hot_film():
@@ -59,8 +108,19 @@ def track():
 
 @bp.route('/all-film')
 def all_film():
-    return render_template('recommend/all-film.html') \
- \
-        @ bp.route('/single')
+    return render_template('recommend/all-film.html')
+
+
+@bp.route('/single')
 def single():
     return render_template('recommend/single.html')
+
+
+# 将数据库中的评分数据的时间戳全部修改为当前时间
+@bp.route('/update-timestamp')
+def update_timestamp():
+    ratings = Ratings.query.all()
+    for rating in ratings:
+        rating.timestamp = time.time()
+    db.session.commit()
+    return 'ok'

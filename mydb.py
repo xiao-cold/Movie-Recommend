@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from app import db
+from database import db
 
 
 # app = Flask(__name__)
@@ -165,6 +165,7 @@ class Ratings(db.Model):
     userId = db.Column(db.Integer, primary_key=True)
     movieId = db.Column(db.Integer)
     rating = db.Column(db.String(255))
+    timestamp = db.Column(db.TIMESTAMP)
 
 class Users(db.Model):
     __tablename__ = 'users'
