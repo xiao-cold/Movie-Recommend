@@ -1,4 +1,5 @@
 import time
+import uuid
 from datetime import datetime
 
 from flask import (
@@ -57,7 +58,7 @@ def get_new_user_ratings():
 @bp.route('/for-you')
 def foryou():
     # 为你推荐
-    user_id = 900231
+    user_id = 902
     recommend_movies = []
 
     # 检查用户是否有评分历史
@@ -92,9 +93,15 @@ def foryou():
         # 生成个性化推荐
         print('here 5 生成个性化推荐')
         recommend_movies = rec_model.get_top_n_recommendations(user_id, 10)
-        # 你的个性化推荐逻辑 ...
+
+        # 根据moviId查询电影信息
+        for i in range(len(recommend_movies)):
+            movieId = recommend_movies[i][0]
+            movie = Movie.query.get(movieId)
+            recommend_movies[i] = movie
 
     return render_template('recommend/for-you.html', recommend_movies=recommend_movies)
+
 
 @bp.route('/hot-film')
 def hot_film():
@@ -105,7 +112,7 @@ def hot_film():
 def track():
     user_id = 1001
     # 根据用户id查询用户的浏览历史
-    tracks = Tracks.query.filter_by(userId=user_id).order_by(Tracks.timestamp.desc()).all()
+    tracks = Tracks.query.filter_by(userId=user_id).order_by(Tracks.time.desc()).all()
 
     return render_template('recommend/track.html')
 
@@ -120,18 +127,32 @@ def single():
     return render_template('recommend/single.html')
 
 
-@bp.route('/single/<int:movieId>/<string:movie_title>')
-def single1(movieId, movie_title):
+@bp.route('/single/<int:movieId>')
+def single1(movieId):
     movie = Movie.query.get(movieId)
+    print(str(movie.movieId) + movie.title + str(movie.year) + str(movie.vote_average))
+
     if movie is None:
         return "Movie not found", 404
 
+    # 根据用户id推荐电影
+    user_id = 1001
+    rec = current_app.model.get_top_n_recommendations(user_id, 10)
+    # 根据moviId查询电影信息
+    for i in range(len(rec)):
+        movieId = rec[i][0]
+        rec[i] = Movie.query.get(movieId)
+        print(rec[i].title + str(rec[i].movieId))
+
     # 记录用户浏览历史
-    track = Tracks(userId=1001, movieId=movieId, time=time.now())
+    # 生成唯一的trackId
+    trackId = uuid.uuid1()
+    track = Tracks(trackId=trackId, userId=1001, movieId=movieId, time=datetime.now())
     db.session.add(track)
     db.session.commit()
 
-    return render_template('recommend/single.html', movie=movie)
+    return render_template('recommend/single.html', movie=movie, rec=rec)
+
 
 # 将数据库中的评分数据的时间戳全部修改为当前时间
 @bp.route('/update-timestamp')

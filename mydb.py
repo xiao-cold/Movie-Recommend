@@ -23,6 +23,7 @@ class Movie(db.Model):
     genres = db.Column(db.String(255))
     vote_average = db.Column(db.String(255))
 
+
 class Action(db.Model):
     __tablename__ = 'top250_Action'
     movieId = db.Column(db.Integer, primary_key=True)
@@ -31,6 +32,7 @@ class Action(db.Model):
     vote_count = db.Column(db.Integer)
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
+
 
 class Adiventure(db.Model):
     __tablename__ = 'top250_Adventure'
@@ -41,6 +43,7 @@ class Adiventure(db.Model):
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
 
+
 class Animation(db.Model):
     __tablename__ = 'top250_Animation'
     movieId = db.Column(db.Integer, primary_key=True)
@@ -49,6 +52,7 @@ class Animation(db.Model):
     vote_count = db.Column(db.Integer)
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
+
 
 class Children(db.Model):
     __tablename__ = 'top250_Children'
@@ -59,6 +63,7 @@ class Children(db.Model):
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
 
+
 class Comedy(db.Model):
     __tablename__ = 'top250_Comedy'
     movieId = db.Column(db.Integer, primary_key=True)
@@ -67,6 +72,7 @@ class Comedy(db.Model):
     vote_count = db.Column(db.Integer)
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
+
 
 class Crime(db.Model):
     __tablename__ = 'top250_Crime'
@@ -77,6 +83,7 @@ class Crime(db.Model):
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
 
+
 class Documentary(db.Model):
     __tablename__ = 'top250_Documentary'
     movieId = db.Column(db.Integer, primary_key=True)
@@ -85,6 +92,7 @@ class Documentary(db.Model):
     vote_count = db.Column(db.Integer)
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
+
 
 class Drama(db.Model):
     __tablename__ = 'top250_Drama'
@@ -95,6 +103,7 @@ class Drama(db.Model):
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
 
+
 class Fantasy(db.Model):
     __tablename__ = 'top250_Fantasy'
     movieId = db.Column(db.Integer, primary_key=True)
@@ -103,6 +112,7 @@ class Fantasy(db.Model):
     vote_count = db.Column(db.Integer)
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
+
 
 class Horror(db.Model):
     __tablename__ = 'top250_Horror'
@@ -113,14 +123,16 @@ class Horror(db.Model):
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
 
+
 class Top_Movies(db.Model):
-    __tablename__ = 'top250_movie'
+    __tablename__ = 'top250_movies'
     movieId = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))  # Adjust the length as per your requirement
     year = db.Column(db.Integer)
     vote_count = db.Column(db.Integer)
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
+
 
 class Mystery(db.Model):
     __tablename__ = 'top250_Mystery'
@@ -130,6 +142,7 @@ class Mystery(db.Model):
     vote_count = db.Column(db.Integer)
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
+
 
 class Romance(db.Model):
     __tablename__ = 'top250_Romance'
@@ -141,7 +154,6 @@ class Romance(db.Model):
     wr = db.Column(db.String(255))
 
 
-
 class SciFi(db.Model):
     __tablename__ = 'top250_Sci-Fi'
     movieId = db.Column(db.Integer, primary_key=True)
@@ -150,6 +162,7 @@ class SciFi(db.Model):
     vote_count = db.Column(db.Integer)
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
+
 
 class Thriller(db.Model):
     __tablename__ = 'top250_Thriller'
@@ -160,6 +173,7 @@ class Thriller(db.Model):
     vote_average = db.Column(db.String(255))
     wr = db.Column(db.String(255))
 
+
 class Ratings(db.Model):
     __tablename__ = 'ratings'
     userId = db.Column(db.Integer, primary_key=True)
@@ -167,25 +181,26 @@ class Ratings(db.Model):
     rating = db.Column(db.String(255))
     timestamp = db.Column(db.TIMESTAMP)
 
+
 class Users(db.Model):
     __tablename__ = 'users'
     userId = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255))
     password = db.Column(db.String(255))
 
+
 class Tracks(db.Model):
     __tablename__ = 'tracks'
-    trackId = db.Column(db.Integer, primary_key=True)
+    trackId = db.Column(db.String(255), primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
-    movieId = db.Column(db.Integer, db.ForeignKey('movies'))
+    movieId = db.Column(db.Integer, db.ForeignKey('all_movies.movieId'))
     time = db.Column(db.String(255))
 
-
-    def __init__(self, title, year, rating):
-        self.title = title
-        self.year = year
-        self.rating = rating
-
+    def __init__(self, trackId, userId, movieId, time):
+        self.trackId = trackId
+        self.userId = userId
+        self.movieId = movieId
+        self.time = time
 
     @classmethod
     def create_movie(cls, title, year, rating):

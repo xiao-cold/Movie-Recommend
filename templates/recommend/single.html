@@ -164,35 +164,39 @@
 <!--                 Page Title Start -->
 				<div class="back">
 					<div class="inline2">
+						{% if movie.poster_path %}
+						<img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="box1 abc1">
+						{% else %}
 						<img src="{{url_for('static',filename='picture/posters/78.jpg')}}" class="box1 abc1">
+						{% endif %}
 						<div class="inline3 box2">
-							{% if movie_title %}
-							<h2 class="block">{{movie_title}}</h2>
+							{% if movie.title %}
+							<h2 class="block">{{movie.title}}</h2>
+							{% else %}
+							<h2 class="block"></h2>
+							{% endif %}
+							{% if movie.genres %}
+							<h2 class="block">{{movie.genres}}</h2>
 							{% else %}
 							<h2 class="block">暂无数据</h2>
 							{% endif %}
-							{% if movie_genres %}
-							<h2 class="block">{{movie_genres}}</h2>
+							{% if movie.vote_average %}
+							<h2 class="block">{{movie.vote_average}}</h2>
 							{% else %}
 							<h2 class="block">暂无数据</h2>
 							{% endif %}
-							{% if movie_rating %}
-							<h2 class="block">{{movie_rating}}</h2>
+							{% if movie.director %}
+							<h2 class="block">{{movie.director}}</h2>
 							{% else %}
 							<h2 class="block">暂无数据</h2>
 							{% endif %}
-							{% if movie_director %}
-							<h2 class="block">{{movie_director}}</h2>
+							{% if movie.cast %}
+							<h2 class="block">{{movie.cast}}</h2>
 							{% else %}
 							<h2 class="block">暂无数据</h2>
 							{% endif %}
-							{% if movie_actors %}
-							<h2 class="block">{{movie_actors}}</h2>
-							{% else %}
-							<h2 class="block">暂无数据</h2>
-							{% endif %}
-							{% if movie_overview %}
-							<h2 class="block">{{movie_overview}}</h2>
+							{% if movie.overview %}
+							<h2 class="block">{{movie.overview}}</h2>
 							{% else %}
 							<h2 class="block">暂无数据</h2>
 							{% endif %}
@@ -202,15 +206,17 @@
 					<div>
 						<h2>推荐</h2>
 					</div>
-					<div class="inline">
-						<a href="{{url_for('recommend.single1',movie_title='abc',movie_genres='abcd')}}"><img src="{{url_for('static',filename='picture/posters/78.jpg')}}" class="abc1"></a>
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<div class="main-product-grid">
+							{% for r in rec%}
+							<div class="inline">
+								<a href="{{url_for('recommend.single1',movieId = r.movieId ,movie_title = r.title )}}"><img
+										src="https://image.tmdb.org/t/p/w500{{r.poster_path}}" class="abc1"></a>
+							</div>
+							{% endfor %}
+						</div>
 					</div>
-					<div class="inline">
-						<a href="{{url_for('recommend.single')}}"><img src="{{url_for('static',filename='picture/posters/78.jpg')}}" class="abc1"></a>
-					</div>
-					<div class="inline">
-						<a href="{{url_for('recommend.single')}}"><img src="{{url_for('static',filename='picture/posters/78.jpg')}}" class="abc1"></a>
-					</div>
+
 				</div>
             </div>
         </div>

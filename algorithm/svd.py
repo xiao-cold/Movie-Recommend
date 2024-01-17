@@ -36,7 +36,7 @@ class RecModel:
         if full_process:
             # 使用 SQLAlchemy 从数据库获取评分数据
             ratings_query = self.db.session.query(Ratings).with_entities(Ratings.userId, Ratings.movieId,
-                                                                         Ratings.rating)
+                                                                         Ratings.rating, Ratings.timestamp)
             self.data = pd.read_sql(ratings_query.statement, self.db.engine)
 
             # # 使用 SQLAlchemy 从数据库获取电影信息
