@@ -7,7 +7,7 @@ from flask import (
 
 from algorithm.svd import RecModel
 from database import db
-from mydb import Movie, Top_Movies, Ratings
+from mydb import Movie, Top_Movies, Ratings, Tracks
 
 bp = Blueprint('recommend', __name__)
 
@@ -103,6 +103,10 @@ def hot_film():
 
 @bp.route('/track')
 def track():
+    user_id = 1001
+    # 根据用户id查询用户的浏览历史
+    tracks = Tracks.query.filter_by(userId=user_id).order_by(Tracks.timestamp.desc()).all()
+
     return render_template('recommend/track.html')
 
 
@@ -115,9 +119,19 @@ def all_film():
 def single():
     return render_template('recommend/single.html')
 
-@bp.route('/single/<string:movie_title>/<string:movie_genres>')
-def single1(movie_title,movie_genres=None,movie_rating=None,movie_director=None,movie_actors=None,movie_overview=None):
-    return render_template('recommend/single.html',movie_title=movie_title,movie_genres=movie_genres,movie_rating=movie_rating,movie_director=movie_director,movie_actors=movie_actors,movie_overview=movie_overview)
+
+@bp.route('/single/<int:movieId>/<string:movie_title>')
+def single1(movieId, movie_title):
+    movie = Movie.query.get(movieId)
+    if movie is None:
+        return "Movie not found", 404
+
+    # 记录用户浏览历史
+    track = Tracks(userId=1001, movieId=movieId, time=time.now())
+    db.session.add(track)
+    db.session.commit()
+
+    return render_template('recommend/single.html', movie=movie)
 
 # 将数据库中的评分数据的时间戳全部修改为当前时间
 @bp.route('/update-timestamp')
