@@ -23,6 +23,20 @@ class Movie(db.Model):
     genres = db.Column(db.String(255))
     vote_average = db.Column(db.String(255))
 
+    def __init__(self, movieId, title, vote_count, director, cast, genres, vote_average, overview=None,
+                 poster_path=None, tmdbId=None, year=None):
+        self.movieId = movieId
+        self.tmdbId = tmdbId
+        self.title = title
+        self.year = year
+        self.vote_count = vote_count
+        self.overview = overview
+        self.poster_path = poster_path
+        self.director = director
+        self.cast = cast
+        self.genres = genres
+        self.vote_average = vote_average
+
     def to_dict(self):
         return {
             'movieId': self.movieId,

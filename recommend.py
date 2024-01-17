@@ -5,6 +5,7 @@ from datetime import datetime
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, current_app
 )
+from sqlalchemy.sql.functions import current_user
 
 from algorithm.svd import RecModel
 from database import db
@@ -29,9 +30,6 @@ def index():
     # 将其中16部电影分配给轮播图，12部电影分配给热门电影
     topmovies_wr_carousel = topmovies_wr[:16]
     topmovies_wr_hot = topmovies_wr[16:]
-
-    rec = current_app.model.get_top_n_recommendations(1001, 10)
-    print(rec)
 
     return render_template('recommend/index.html', topmovies_least=topmovies_least,
                            topmovies_wr_carousel=topmovies_wr_carousel, topmovies_wr_hot=topmovies_wr_hot)
@@ -58,7 +56,9 @@ def get_new_user_ratings():
 @bp.route('/for-you')
 def foryou():
     # 为你推荐
-    user_id = 1001
+    user_id = g.user.userId
+    print(user_id)
+    print(type(user_id))
     recommend_movies = []
 
     # 检查用户是否有评分历史
@@ -117,12 +117,16 @@ def foryou_movie(genre):
               'Film-Noir', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']
     return render_template('recommend/for-you.html', recommend_movies=recommend_movies, genres_list=genres)
 
+
 @bp.route('/track')
+@login_required
 def track():
-    user_id = 1001
+    user_id = g.user.userId
+    print(user_id)
+    print("track")
     # 根据用户id查询用户的浏览历史
     tracks = Tracks.query.filter_by(userId=user_id).order_by(Tracks.time.desc()).all()
-
+    print(tracks[0].movieId)
     movies = []
     # 根据moviId查询电影信息
     for i in range(len(tracks)):
@@ -143,7 +147,7 @@ def single1(movieId):
     # 记录用户浏览历史
     # 生成唯一的trackId
     trackId = uuid.uuid1()
-    track = Tracks(trackId=trackId, userId=1001, movieId=movieId, time=datetime.now())
+    track = Tracks(trackId=trackId, userId=g.user.userId, movieId=movieId, time=datetime.now())
     db.session.add(track)
     db.session.commit()
 
@@ -154,7 +158,7 @@ def single1(movieId):
         return "Movie not found", 404
 
     # 根据用户id推荐电影
-    user_id = 1001
+    user_id = g.user.userId
     rec = current_app.model.get_top_n_recommendations(user_id, 10)
     # 根据moviId查询电影信息
     for i in range(len(rec)):
@@ -167,23 +171,55 @@ def single1(movieId):
 
 @bp.route('/manage')
 def manage():
+    print("manage")
+    print(g.user.userId)
     # 查询数据库
     movies = Movie.query.limit(20).all()
-    users = Users.query.limit(20).all()
-    ratings = Ratings.query.limit(20).all()
-    tracks = Tracks.query.limit(20).all()
+    # users = Users.query.limit(20).all()
+    # ratings = Ratings.query.limit(20).all()
+    # tracks = Tracks.query.limit(20).all()
 
-    return render_template('recommend/manage1.html', movies=movies, users=users, ratings=ratings, tracks=tracks)
+    return render_template('recommend/manage1.html', movies=movies)
 
 
-@bp.route('/manage-insert')
+@bp.route('/manage-insert', methods=('GET', 'POST'))
+@login_required
 def manage_insert():
+    if request.method == 'POST':
+        movieId = request.form['movieId']
+        title = request.form['title']
+        director = request.form['director']
+        vote_average = request.form['vote_average']
+        vote_count = request.form['vote_count']
+        cast = request.form['cast']
+        genres = request.form['genres']
+
+        # 数据库插入
+        if title and director and vote_average and vote_count and cast and genres:
+            movie = Movie(movieId=movieId, title=title, director=director, vote_average=vote_average,
+                          vote_count=vote_count, cast=cast, genres=genres)
+            print(
+                movie.movieId + movie.title + movie.director + movie.vote_average + movie.vote_count + movie.cast + movie.genres)
+            try:
+                print("插入")
+                db.session.add(movie)
+                db.session.commit()
+            except db.IntegrityError:
+                print("插入失败")
+                return render_template('recommend/error.html')
+        else:
+            print("有空值")
+            return render_template('recommend/error.html')
+        print("插入成功")
+        return redirect(url_for('recommend.manage'))
+
     return render_template('recommend/insert.html')
 
 
 @bp.route('/manage-update')
 def manage_update():
     return render_template('recommend/update.html')
+
 
 
 # 将数据库中的评分数据的时间戳全部修改为当前时间

@@ -15,7 +15,9 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
+    print("register out")
     if request.method == 'POST':
+        print("register in")
         username = request.form[
             'username']  # request.form is a special type of dict mapping submitted form keys and values. The user will input their username and password.
         password = request.form['password']
@@ -39,9 +41,11 @@ def register():
             else:
                 return redirect(url_for("auth.login"))  # url_for(视图函数名)
 
+        print("register error", error)
         flash(error)
 
     return render_template('auth/register.html')
+
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
@@ -58,14 +62,18 @@ def login():
 
         if user is None:
             error = 'Incorrect username.'
-        elif not check_password_hash(user['password'], password):
+        elif check_password_hash(user.password, password):
             error = 'Incorrect password.'
-
+        if user.userId < 2000:
+            g.user = user
+            return redirect(url_for('recommend.manage'))
         if error is None:
             session.clear()
             session['user_id'] = user.userId
-            return redirect(url_for('index'))
+            g.user = user
+            return redirect(url_for('recommend.index'))
 
+        print(error)
         flash(error)
 
     return render_template('auth/login.html')
@@ -73,17 +81,30 @@ def login():
 
 @bp.route('/logout')
 def logout():
+    # session.clear() 会将session中的user_id删除
     session.clear()
     return redirect(url_for('index'))
+
 
 def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        if g.user is None:
+        try:
+            if g.user is None:
+                return redirect(url_for('auth.login'))
+        except(AttributeError):
             return redirect(url_for('auth.login'))
 
         return view(**kwargs)
 
     return wrapped_view
 
-
+#
+# @bp.before_app_request
+# def load_logged_in_user():
+#     user_id = session.get('user_id')
+#
+#     if user_id is None:
+#         g.user = Users.query.get(2008)
+#     else:
+#         g.user = Users.query.get(user_id)

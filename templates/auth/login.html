@@ -59,17 +59,18 @@
                             </div>
 <!--                            <div class="ad-other-feilds">-->
 <!--                                <div class="ad-checkbox">-->
-<!--                                    <label>-->
-<!--									<input type="checkbox" name="remeber" class="ad-checkbox">-->
-<!--									<span>Remember Me</span>-->
-<!--									</label>-->
-<!--                                </div>-->
-<!--                                <a class="forgot-pws-btn" href="forgot-pws.html">Forgot Password?</a>-->
-<!--                            </div>-->
+                            <!--                                    <label>-->
+                            <!--									<input type="checkbox" name="remeber" class="ad-checkbox">-->
+                            <!--									<span>Remember Me</span>-->
+                            <!--									</label>-->
+                            <!--                                </div>-->
+                            <!--                                <a class="forgot-pws-btn" href="forgot-pws.html">Forgot Password?</a>-->
+                            <!--                            </div>-->
                             <div class="ad-auth-btn">
                                 <input type="submit" value="登录" href="{{url_for('auth.login')}}">
                             </div>
-                            <p class="ad-register-text">没有账户? <a href="register.html">点击这里</a></p>
+                            <p class="ad-register-text">没有账户? <a href="{{url_for('auth.register')}}">点击这里</a>
+                            </p>
                         </form>
                     </div>
                 </div>
