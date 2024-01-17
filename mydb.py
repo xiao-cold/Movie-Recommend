@@ -114,7 +114,7 @@ class Horror(db.Model):
     wr = db.Column(db.String(255))
 
 class Top_Movies(db.Model):
-    __tablename__ = 'top250_movies'
+    __tablename__ = 'top250_movie'
     movieId = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))  # Adjust the length as per your requirement
     year = db.Column(db.Integer)
