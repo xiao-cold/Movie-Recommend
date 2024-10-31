@@ -9,7 +9,9 @@
 ## *0x01 热门推荐*
 
 采用了 IMDB 网站的评分权重计算公式：
-$$wr = \frac{v}{v+m} * R + \frac{m}{v+m} * C$$
+```math
+wr = \frac{v}{v+m} * R + \frac{m}{v+m} * C
+```
 其中：
 
 - v: 电影的评分人数
@@ -32,7 +34,9 @@ $$wr = \frac{v}{v+m} * R + \frac{m}{v+m} * C$$
 ## *0x03 SVD 隐语义模型*
 
 本项目中，使用的是 SVD++ 隐语义模型，计算方式是：
-$$\hat{r}_{ui} = \mu + b_u + b_i + q_i^T(p_u + |I_u|^{-\frac{1}{2}}\sum_{j \in I_u}y_j)$$
+```math
+\hat{r}_{ui} = \mu + b_u + b_i + q_i^T(p_u + |I_u|^{-\frac{1}{2}}\sum_{j \in I_u}y_j)
+```
 其中：
 
 - $\mu$ 是所有电影的平均评分
